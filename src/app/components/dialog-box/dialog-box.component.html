@@ -1,0 +1,34 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title>Acción :: <strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+
+  <ng-container *ngIf="page == 'wrongInputs'; then wrongInputs"></ng-container>
+  <ng-container *ngIf="page == 'product'; then productTemplate"></ng-container>
+
+
+  <div class="text" *ngIf="canClose">
+    <p>Llene todos los campos.</p>
+  </div>
+  <ng-template #productTemplate>
+    <ng-container *ngIf="action == 'Agregar' || action == 'Editar'; else deleteTemplate">
+      <mat-form-field >
+        <input placeholder="Nombre" matInput [(ngModel)]="local_data.name">
+      </mat-form-field>
+      <mat-form-field >
+        <input placeholder="Precio" type="number" matInput [(ngModel)]="local_data.price">
+      </mat-form-field>
+      <mat-form-field >
+        <input placeholder="Cantidad" type="number" matInput [(ngModel)]="local_data.quantity">
+      </mat-form-field>
+      <input placeholer="Imagen" type="file" (change)="uploadFile($event)">
+    </ng-container>
+  </ng-template>
+  <ng-template #deleteTemplate>
+    ¿Está seguro de que desea realizar esta acción?
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
+</div>
