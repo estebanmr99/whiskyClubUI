@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               this.loading = false;
             },
             error => {
-                this.error = "El nombre de usuario o la contraseña son inválidas";
+                this.error = "The email and password you entered don't match.";
                 console.log(error);
                 this.loading = false;
             },

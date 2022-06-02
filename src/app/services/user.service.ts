@@ -16,8 +16,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private jwtService: JWTTokenService, private localStorageService: LocalStorageService) { }
 
-  login(username: string, password: string): Observable<any> {
-    const body = { username: username, password: password };
+  login(email: string, password: string): Observable<any> {
+    const body = { email: email, password: password };
     return this.http.post<any>('http://localhost:3000/user/login', body);
   }
 

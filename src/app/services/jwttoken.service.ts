@@ -1,16 +1,16 @@
 import { NullTemplateVisitor } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import jwt_decode  from 'jwt-decode';
- 
+
 @Injectable()
 export class JWTTokenService {
- 
+
     jwtToken: string;
     decodedToken: { [key: string]: string };
- 
+
     constructor() {
     }
- 
+
     setToken(token: string) {
       if (token) {
         this.jwtToken = token;
@@ -22,7 +22,7 @@ export class JWTTokenService {
         this.jwtToken = null;
       }
     }
- 
+
     decodeToken() {
       if (this.jwtToken) {
       this.decodedToken = jwt_decode(this.jwtToken);
@@ -36,22 +36,22 @@ export class JWTTokenService {
     getDecodeToken() {
       return jwt_decode(this.jwtToken);
     }
- 
-    getUserName() {
+
+    getUserEmail() {
       this.decodeToken();
-      return this.decodedToken ? this.decodedToken.username : null;
+      return this.decodedToken ? this.decodedToken.email : null;
     }
- 
+
     getId() {
       this.decodeToken();
       return this.decodedToken ? this.decodedToken._id : null;
     }
- 
+
     getExpiryTime() {
       this.decodeToken();
       return this.decodedToken ? +this.decodedToken.exp : 0;
     }
- 
+
     isTokenExpired(): boolean {
       const expiryTime: number = this.getExpiryTime();
       if (expiryTime) {

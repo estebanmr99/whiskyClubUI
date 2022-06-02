@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.username = this.jwtService.getUserName().toUpperCase();
+    this.username = this.jwtService.getUserEmail().toUpperCase();
   }
 
   getTitle(){
