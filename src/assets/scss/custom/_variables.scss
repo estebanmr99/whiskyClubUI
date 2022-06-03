@@ -358,7 +358,7 @@ $font-size-xs:                ($font-size-base * .75);
 
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
-$font-weight-bold:            600 !default;
+$font-weight-bold:            500 !default;
 $font-weight-extra-bold:      700 !default;
 
 $font-weight-base:            $font-weight-normal !default;
@@ -515,7 +515,7 @@ $btn-line-height-lg:          $input-btn-line-height-lg !default;
 
 $btn-border-width:            $input-btn-border-width !default;
 
-$btn-font-weight:             600 !default;
+$btn-font-weight:             500 !default;
 
 $btn-text-transform:          none !default;
 
