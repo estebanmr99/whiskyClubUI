@@ -1,0 +1,11 @@
+<div>
+    <div class ="radio">
+        <mat-radio-group name="countries" [(ngModel)]="selectedCountry">
+            <mat-radio-button *ngFor="let co of countryOptions" name="countries" [value]="co"  >
+            {{co}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <button mat-raised-button  (click)="choice()">Pick</button>
+    <div class="texto">Pick your country: </div>
+</div>
