@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
-  HttpClient,
-  HttpHeaders
+  HttpClient
 } from '@angular/common/http';
 import { JWTTokenService } from './jwttoken.service';
 import { LocalStorageService } from './local-storage.service';
-
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,20 @@ export class UserService {
   login(email: string, password: string): Observable<any> {
     const body = { email: email, password: password };
     return this.http.post<any>('http://localhost:3000/user/login', body);
+  }
+
+  register(userFormInfo: FormGroup, userDeliveryPosition: any): Observable<any> {
+    const body = {
+      email: userFormInfo.value.email,
+      password: userFormInfo.value.password,
+      telephone: userFormInfo.value.telephone,
+      name: userFormInfo.value.name,
+      lastName: userFormInfo.value.lastName,
+      positionLat: userDeliveryPosition.lat,
+      positionLng: userDeliveryPosition.lng,
+      country: this.localStorageService.get('country')
+    };
+    return this.http.post<any>('http://localhost:3000/user/auth/register', body);
   }
 
   isTokenExpired() {

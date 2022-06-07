@@ -24,7 +24,6 @@ import { AuthorizeGuard } from './services/authorize-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
-import { CountryComponent } from './pages/country/country.component';
 
 @NgModule({
   imports: [
@@ -43,8 +42,7 @@ import { CountryComponent } from './pages/country/country.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     DasbhoardComponent,
-    ExpansionComponent,
-    CountryComponent
+    ExpansionComponent
   ],
   providers: [
     NgbActiveModal,

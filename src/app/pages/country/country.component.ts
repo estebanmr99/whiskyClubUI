@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../services/local-storage.service'
+import { LocalStorageService } from '../../services/local-storage.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-country',
@@ -8,28 +9,41 @@ import { LocalStorageService } from '../../services/local-storage.service'
 })
 export class CountryComponent implements OnInit {
 
-  constructor(private localStorage: LocalStorageService) { }
+  selectedCountry: string;
+  countryOptions: string[];
+  submitted: boolean;
 
-  selectedCountry: string = '';
-  countryOptions = [
-    'United States',
-    'Scotlan',
-    'Ireland'
-  ];
+  constructor(
+      private localStorage: LocalStorageService,
+      private router: Router,
+    ) {
+      this.countryOptions = [
+        'United States',
+        'Scotlan',
+        'Ireland'
+      ];
+      this.selectedCountry = '';
+      this.submitted = false;
+    }
 
   choice() {
+    this.submitted = true;
     switch (this.selectedCountry) {
-      case 'United States' :
-                            this.localStorage.set('country','United States');
-                            break;
-      case 'Scotlan' :
-                     this.localStorage.set('country','Scotlan');
-                     break;
-      case 'Ireland' :
-                      this.localStorage.set('country','Ireland');
-                      break;
+      case 'United States':
+        this.localStorage.set('country', this.selectedCountry);
+        break;
+      case 'Scotlan':
+        this.localStorage.set('country', this.selectedCountry);
+        break;
+      case 'Ireland':
+        this.localStorage.set('country', this.selectedCountry);
+        break;
+      default:
+        this.selectedCountry = '';
+        return;
     }
-    console.log(this.localStorage.get('country'));
+
+    this.router.navigate(['/login']);
   }
 
   ngOnInit(): void {
