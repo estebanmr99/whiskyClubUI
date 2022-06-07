@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     // redirect to home if already logged in
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
-        this.router.navigate(['/products']);
+      this.router.navigate(['/products']);
+    }
+    var country = this.localStorageService.get('country');
+    if (country === null) {
+      this.router.navigate(['/country']);
     }
     this.userService.userValue = false;
   }
@@ -46,6 +50,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  gotoRegister() {
+    this.router.navigate(["/register"]);
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -57,22 +65,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     this.userService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-              this.localStorageService.set('token', data.token);
-              this.userService.userValue = true;
-              this.loading = false;
-            },
-            error => {
-                this.error = "The email and password you entered don't match.";
-                console.log(error);
-                this.loading = false;
-            },
-            () => {
-              this.router.navigate([this.returnUrl]);
-            }
-          );
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.localStorageService.set('token', data.token);
+          this.userService.userValue = true;
+          this.loading = false;
+        },
+        error => {
+          this.error = "The email and password you entered don't match.";
+          console.log(error);
+          this.loading = false;
+        },
+        () => {
+          this.router.navigate([this.returnUrl]);
+        }
+      );
   }
 
   ngOnDestroy() {

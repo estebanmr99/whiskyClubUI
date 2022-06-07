@@ -22,14 +22,14 @@ export class AuthorizeGuard implements CanActivate {
       }
       if (this.jwtService.getUserEmail()) {
           if (this.jwtService.isTokenExpired()) {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/country']);
             // Should Redirect Sig-In Page
           } else {
             return true;
           }
       }
       else {
-        return this.router.navigate(['/login']);
+        return this.router.navigate(['/country']);
       }
   }
 }

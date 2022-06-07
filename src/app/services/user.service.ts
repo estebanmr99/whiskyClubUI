@@ -29,7 +29,7 @@ export class UserService {
       lastName: userFormInfo.value.lastName,
       positionLat: userDeliveryPosition.lat,
       positionLng: userDeliveryPosition.lng,
-      country: this.localStorageService.get('country')
+      country: this.localStorageService.get('country'),
     };
     return this.http.post<any>('http://localhost:3000/user/auth/register', body);
   }
