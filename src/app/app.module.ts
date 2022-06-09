@@ -24,8 +24,6 @@ import { AuthorizeGuard } from './services/authorize-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
-import { SubscriptionComponent } from './pages/subscription/subscription.component';
-import { CreateProductsComponent } from './pages/create-products/create-products.component';
 
 @NgModule({
   imports: [
@@ -44,9 +42,7 @@ import { CreateProductsComponent } from './pages/create-products/create-products
     AdminLayoutComponent,
     AuthLayoutComponent,
     DasbhoardComponent,
-    ExpansionComponent,
-    SubscriptionComponent,
-    CreateProductsComponent
+    ExpansionComponent
   ],
   providers: [
     NgbActiveModal,

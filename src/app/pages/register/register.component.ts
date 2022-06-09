@@ -202,7 +202,6 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         _ => {
-          console.log('Responde');
           this.loading = false;
         },
         error => {
