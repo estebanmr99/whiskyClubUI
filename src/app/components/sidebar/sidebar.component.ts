@@ -10,8 +10,9 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
     { path: '/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
-    { path: '/subscription', title: 'Select subscription',  icon: 'ni-archive-2 text-blue', class: '' },
-    { path: '/create-products', title: 'Create products',  icon: 'ni-archive-2 text-blue', class: '' },
+    { path: '/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
+    { path: '/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
+    { path: '/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
 ];
 
 @Component({

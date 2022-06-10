@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.localStorageService.set('token', data.token);
           this.userService.userValue = true;
           this.loading = false;
+          this.error = "";
         },
         error => {
           this.error = "The email and password you entered don't match.";

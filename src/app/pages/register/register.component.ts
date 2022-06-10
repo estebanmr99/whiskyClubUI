@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { first, last } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { UserService } from '../../services/user.service';
 
@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private localStorageService: LocalStorageService
@@ -203,6 +202,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         _ => {
           this.loading = false;
+          this.error = "";
         },
         error => {
           console.log(error);

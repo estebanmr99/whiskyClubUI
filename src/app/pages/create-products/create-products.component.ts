@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { DatePipe } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MaterialModule } from 'src/app/material/material.module';
 
@@ -15,7 +16,8 @@ import { MaterialModule } from 'src/app/material/material.module';
   providers: [DatePipe],
 })
 export class CreateProductsComponent implements OnInit {
- 
+
+  categoriesFilter = new FormControl();
 
   dataSource = new MatTableDataSource();
 
