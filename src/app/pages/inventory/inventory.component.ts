@@ -119,12 +119,12 @@ export class InventoryComponent implements OnInit {
     this.tableStoreInventoryList = [];
     this.productsInfoList.forEach((product) => {
       const productInventory = this.allStoresInventoryList.find((productInventory) =>
-        productInventory.idProduct === product.idProduct && productInventory.inventory.idStore === idStore);
+        productInventory.idProduct === product.idProduct && productInventory.idStore === idStore);
       this.tableStoreInventoryList.push(
         {
           idProduct: product.idProduct,
           name: product.name,
-          quantity: productInventory ? productInventory.inventory.quantity : 0,
+          quantity: productInventory ? productInventory.quantity : 0,
           idStore: idStore
         });
     });
@@ -168,7 +168,7 @@ export class InventoryComponent implements OnInit {
       this.selection.deselect(row);
     });
     const productInventory = this.allStoresInventoryList.find((productInventory) =>
-      productInventory.idProduct === eventRow.idProduct && productInventory.inventory.idStore === eventRow.idStore);
+      productInventory.idProduct === eventRow.idProduct && productInventory.idStore === eventRow.idStore);
 
     this.productForm.setValue({
       idProduct: null,
@@ -180,7 +180,7 @@ export class InventoryComponent implements OnInit {
     if (productInventory && !this.selection.isSelected(eventRow)) {
       this.productForm.setValue({
         idProduct: productInventory.idProduct,
-        inventory: productInventory.inventory.quantity,
+        inventory: productInventory.quantity,
         currency: productInventory.currency,
         localPrice: productInventory.localPrice,
         globalPrice: productInventory.globalPrice,
@@ -199,8 +199,9 @@ export class InventoryComponent implements OnInit {
 
     const foundIndex = this.storesInfoList.findIndex((x) => x.name === this.stores.value);
     const idStore = this.storesInfoList[foundIndex].idStore;
+    const country = this.storesInfoList[foundIndex].country;
 
-    this.inventoryService.updateStoreInventory(idStore, this.productForm)
+    this.inventoryService.updateStoreInventory(idStore, country, this.productForm)
       .pipe(first())
       .subscribe(
         _ => {

@@ -25,9 +25,10 @@ export class InventoryService {
     return this.http.get<any>('http://localhost:3000/inventory/getAllStoresInventory');
   }
 
-  updateStoreInventory(idStore: number, productFormInfo: FormGroup): Observable<any> {
+  updateStoreInventory(idStore: number, country: string, productFormInfo: FormGroup): Observable<any> {
     const body = {
       idStore: idStore,
+      country: country,
       idProduct: productFormInfo.value.idProduct,
       currency: productFormInfo.value.currency,
       localPrice: productFormInfo.value.localPrice,
