@@ -10,6 +10,10 @@ import { RegisterComponent } from '../../pages/register/register.component';
 import { MaterialModule } from '../../material/material.module';
 
 import { LoginComponent } from '../../pages/login/login.component';
+
+
+import { EmployeeComponent } from '../../pages/employee/employee.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +26,8 @@ import { LoginComponent } from '../../pages/login/login.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    CountryComponent
+    CountryComponent,
+    EmployeeComponent
   ]
 })
 export class AuthLayoutModule { }

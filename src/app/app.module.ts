@@ -19,6 +19,7 @@ import { MaterialModule } from './material/material.module';
 import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
 import { AttributesService } from './services/attributes.service';
+import { EmployeesService } from './services/employees.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
@@ -49,6 +50,7 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     UserService,
     ProductsService,
     AttributesService,
+    EmployeesService,
     AuthorizeGuard,
     JWTTokenService,
     LocalStorageService,
