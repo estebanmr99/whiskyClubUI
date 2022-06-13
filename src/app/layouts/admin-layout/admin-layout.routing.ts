@@ -5,6 +5,7 @@ import { ProductProfileComponent } from '../../pages/product-profile/product-pro
 import { AuthorizeGuard } from '../../services/authorize-guard.service';
 import { CreateProductsComponent } from 'src/app/pages/create-products/create-products.component';
 import { SubscriptionComponent } from 'src/app/pages/subscription/subscription.component';
+import { EmployeeComponent } from 'src/app/pages/employee/employee.component';
 import { InventoryComponent } from 'src/app/pages/inventory/inventory.component';
 
 export const AdminLayoutRoutes: Routes = [
@@ -12,5 +13,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'product-profile/:id',   component: ProductProfileComponent, canActivate: [AuthorizeGuard] },
     { path: 'create-products',           component: CreateProductsComponent, canActivate: [AuthorizeGuard] },
     { path: 'subscription',           component: SubscriptionComponent, canActivate: [AuthorizeGuard] },
+    { path: 'employee',           component: EmployeeComponent, canActivate: [AuthorizeGuard] },
     { path: 'inventory',           component: InventoryComponent, canActivate: [AuthorizeGuard] },
 ];

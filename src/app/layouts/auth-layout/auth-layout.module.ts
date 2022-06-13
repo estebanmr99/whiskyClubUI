@@ -12,7 +12,6 @@ import { MaterialModule } from '../../material/material.module';
 import { LoginComponent } from '../../pages/login/login.component';
 
 
-import { EmployeeComponent } from '../../pages/employee/employee.component';
 
 @NgModule({
   imports: [
@@ -26,8 +25,7 @@ import { EmployeeComponent } from '../../pages/employee/employee.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    CountryComponent,
-    EmployeeComponent
+    CountryComponent
   ]
 })
 export class AuthLayoutModule { }
