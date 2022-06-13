@@ -10,6 +10,9 @@ import { ProductProfileComponent } from '../../pages/product-profile/product-pro
 import { ProductComponent } from '../../pages/products/product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../../material/material.module';
+import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
+import { CreateProductsComponent } from '../../pages/create-products/create-products.component';
+import { InventoryComponent } from '../../pages/inventory/inventory.component';
 
 @NgModule({
   imports: [
@@ -24,7 +27,10 @@ import { MaterialModule } from '../../material/material.module';
   ],
   declarations: [
     ProductComponent,
-    ProductProfileComponent
+    ProductProfileComponent,
+    SubscriptionComponent,
+    CreateProductsComponent,
+    InventoryComponent
   ]
 })
 

@@ -1,0 +1,139 @@
+<div class="header bg-gradient-danger pb-5 pt-5 pt-md-5">
+  <div class="container-fluid">
+
+  </div>
+</div>
+
+<!-- Page content -->
+<div style="margin-left: 20%;">
+  <div style="margin: 3rem;">
+    <h1 class="display-4">Select store</h1>
+    <mat-form-field appearance="fill" style="width: 20rem;">
+      <mat-label>Store</mat-label>
+      <mat-select [formControl]="stores" (selectionChange)="onStoreChange()">
+        <mat-option *ngFor="let store of storesInfoList" [value]="store.name">{{ store.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div style="margin-top: 5rem;">
+    <div class="container-fluid align-center table">
+
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Available products
+
+          </h3>
+        </div>
+      </div>
+
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-100">
+        <ng-container matColumnDef="select">
+          <th class="thead-light th " mat-header-cell *matHeaderCellDef>
+          </th>
+          <td class="td" mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation();selectSingleRow(row)" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th class="thead-light  th " mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="media-body">
+
+              <span class="mb-0 text-sm">{{element.name}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="inventory">
+          <th class="thead-light th " mat-header-cell *matHeaderCellDef mat-sort-header> Inventory</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="media-body">
+
+              <span>{{element.quantity}} </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr class="thead-light " mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator hidePageSize="true" MatFormFieldAppearance="fill" [pageSize]="3">
+      </mat-paginator>
+    </div>
+
+    <form [formGroup]="productForm" (ngSubmit)="updateInventory()" style="display: inline-block; vertical-align:top; margin-left: 5%;">
+      <div class="card card-profile shadow" style="display: inline-block !important;">
+        <h1 class="text-center" style="margin-top: 1rem;">Change in store product</h1>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="text-center input-box">
+            <div class="row">
+              <div class="col-5">
+                <p>Inventory</p>
+              </div>
+              <div class="col-6 input-margin">
+                <input
+                  id="typeahead-basic"
+                  type="number"
+                  class="form-control"
+                  formControlName="inventory"
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <p>Currency</p>
+              </div>
+              <div class="col-6 input-margin">
+                <input
+                  id="typeahead-basic"
+                  type="text"
+                  class="form-control"
+                  formControlName="currency"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <p>Local price</p>
+              </div>
+              <div class="col-6 input-margin">
+                <input
+                  id="typeahead-basic"
+                  type="number"
+                  class="form-control"
+                  formControlName="localPrice"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <p>Global price</p>
+              </div>
+              <div class="col-6 input-margin">
+                <input
+                  id="typeahead-basic"
+                  type="number"
+                  class="form-control"
+                  formControlName="globalPrice"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button [disabled]="loading" class="btn btn-primary my-4">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Update
+          </button>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
