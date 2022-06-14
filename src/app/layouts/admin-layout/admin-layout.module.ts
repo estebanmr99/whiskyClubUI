@@ -14,6 +14,8 @@ import { SubscriptionComponent } from '../../pages/subscription/subscription.com
 import { EmployeeComponent } from '../../pages/employee/employee.component';
 import { CreateProductsComponent } from '../../pages/create-products/create-products.component';
 import { InventoryComponent } from '../../pages/inventory/inventory.component';
+import { OrdersComponent } from '../../pages/orders/orders.component';
+import { ReportsComponent } from '../../pages/reports/reports.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { InventoryComponent } from '../../pages/inventory/inventory.component';
     SubscriptionComponent,
     EmployeeComponent,
     CreateProductsComponent,
-    InventoryComponent
+    InventoryComponent,
+    OrdersComponent,
+    ReportsComponent
   ]
 })
 

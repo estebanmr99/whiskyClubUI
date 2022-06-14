@@ -1,0 +1,45 @@
+<div class="header bg-gradient-danger pb-8 pt-6 pt-md-7 ">
+
+    <div class="container-fluid mt--15 table">
+
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h2 class="mb-0">Your orders
+
+                </h2>
+            </div>
+        </div>
+
+        <table mat-table [dataSource]="dataOrders" matSort class="mat-elevation-z8 w-100">
+
+            <ng-container matColumnDef="date">
+                <th class="thead-light  th " mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.createDate}} </td>">
+            </ng-container>
+            <ng-container matColumnDef="order">
+                <th class="thead-light th " mat-header-cell *matHeaderCellDef> #Order </th>
+                <td mat-cell *matCellDef="let element"> {{element.idSale}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <th class="thead-light th  " mat-header-cell *matHeaderCellDef> Total</th>
+                <td mat-cell *matCellDef="let element"> {{element.totalSale}} </td>">
+            </ng-container>
+            <ng-container matColumnDef="view">
+                <th mat-header-cell *matHeaderCellDef> View </th>
+                <td mat-cell *matCellDef="let j = index;">
+                    <button mat-raised-button color="warn" focusable="false" (click)="viewOrderDetails(j)">
+                        View order details
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr class="thead-light " mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+
+
+
+    </div>
+</div>
