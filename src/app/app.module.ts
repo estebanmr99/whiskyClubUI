@@ -26,7 +26,6 @@ import { AuthorizeGuard } from './services/authorize-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
-import { ViewOrderDetailComponent } from './pages/view-order-detail/view-order-detail.component';
 
 
 @NgModule({
@@ -46,8 +45,7 @@ import { ViewOrderDetailComponent } from './pages/view-order-detail/view-order-d
     AdminLayoutComponent,
     AuthLayoutComponent,
     DasbhoardComponent,
-    ExpansionComponent,
-    ViewOrderDetailComponent
+    ExpansionComponent
   ],
   providers: [
     NgbActiveModal,

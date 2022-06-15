@@ -9,6 +9,7 @@ import { EmployeeComponent } from 'src/app/pages/employee/employee.component';
 import { InventoryComponent } from 'src/app/pages/inventory/inventory.component';
 import { OrdersComponent } from 'src/app/pages/orders/orders.component';
 import { ReportsComponent } from 'src/app/pages/reports/reports.component';
+import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'products',           component: ProductComponent, canActivate: [AuthorizeGuard] },
@@ -19,4 +20,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'inventory',           component: InventoryComponent, canActivate: [AuthorizeGuard] },
     { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard] },
     { path: 'reports',           component: ReportsComponent, canActivate: [AuthorizeGuard] },
+    { path: 'order-detail/:idOrder',           component: ViewOrderDetailComponent, canActivate: [AuthorizeGuard] },
 ];

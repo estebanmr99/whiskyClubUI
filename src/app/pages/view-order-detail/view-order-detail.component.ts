@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-order-detail',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrderDetailComponent implements OnInit {
 
-  constructor() { }
+  idOrder: string;
+
+  constructor(private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.idOrder= this.rutaActiva.snapshot.params.idOrder;
+    
   }
 
 }

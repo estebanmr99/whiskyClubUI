@@ -16,6 +16,7 @@ import { CreateProductsComponent } from '../../pages/create-products/create-prod
 import { InventoryComponent } from '../../pages/inventory/inventory.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
 import { ReportsComponent } from '../../pages/reports/reports.component';
+import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ReportsComponent } from '../../pages/reports/reports.component';
     CreateProductsComponent,
     InventoryComponent,
     OrdersComponent,
-    ReportsComponent
+    ReportsComponent,
+    ViewOrderDetailComponent
   ]
 })
 

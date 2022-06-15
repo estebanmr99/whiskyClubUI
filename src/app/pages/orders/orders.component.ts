@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { JWTTokenService } from '../../services/jwttoken.service';
 import { OrdersService } from '../../services/orders.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -14,7 +15,9 @@ export class OrdersComponent implements OnInit {
                   {idSale:2,createDate:"12-2-20202",totalSale:200}];
 
 
-  constructor(private tokenService: JWTTokenService,private orderService: OrdersService) { 
+  constructor(private tokenService: JWTTokenService,
+    private orderService: OrdersService,
+    private router: Router) { 
 
     this.displayedColumns= [
       "date",
@@ -27,9 +30,11 @@ export class OrdersComponent implements OnInit {
 
   viewOrderDetails(cod: number) {
     
-    console.log(this.dataOrders[cod].totalSale);
-    console.log(this.tokenService.getId());
-    //navegate viwordersDetails
+    //console.log(this.dataOrders[cod].totalSale);
+    //console.log(this.tokenService.getId());
+    var idOrder = this.dataOrders[cod].idSale;
+    this.router.navigate(['/order-detail',idOrder]);
+  
 
   }
   getOrders() {
