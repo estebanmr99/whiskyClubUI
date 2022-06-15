@@ -1,16 +1,12 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "../../material/material.module";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
-import { MatSort } from "@angular/material/sort";
-import { MatPaginator } from "@angular/material/paginator";
-import { AttributesService } from "src/app/services/attributes.service";
-import { ProductsService } from "src/app/services/products.service";
-import { MatDialog } from "@angular/material/dialog";
-import { DialogBoxComponent } from "src/app/components/dialog-box/dialog-box.component";
 import { DatePipe } from "@angular/common";
 import { SelectionModel } from "@angular/cdk/collections";
+import { JWTTokenService } from '../../services/jwttoken.service';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { UserService } from '../../services/user.service';
 
 @NgModule({
   imports: [MaterialModule],
@@ -29,9 +25,27 @@ export class SubscriptionComponent implements OnInit {
   allProductsResult: Array<any> = [];
   selection = new SelectionModel<any>(true, []);
 
-  constructor(
-  ) {}
+  constructor(private tokenService: JWTTokenService,
+    private localStorage: LocalStorageService,
+    private userService: UserService) {}
 
+  selectSubscription(id:string){
+
+    var iduser= this.tokenService.getId();
+    var country = this.localStorage.get('country');
+
+    this.userService.subscription(iduser,id,country).subscribe(
+      (data) => {
+        console.log("data: ", data);
+      },
+      (error) => {
+        console.log("Error: ", error);
+      }
+    );
+
+
+
+  }
   ngOnInit(): void {}
 
   }
