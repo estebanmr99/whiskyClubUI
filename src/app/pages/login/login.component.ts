@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 
 import { LocalStorageService } from '../../services/local-storage.service'
+import { JWTTokenService } from 'src/app/services/jwttoken.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitted = false;
   returnUrl: string;
   error = '';
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private tokenService: JWTTokenService
   ) {
     // redirect to home if already logged in
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
@@ -79,12 +80,27 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
         () => {
-          this.router.navigate([this.returnUrl]);
+          if (this.tokenService.getToken() == null){
+            this.tokenService.setToken(this.localStorageService.get('token'));
+          }
+          if (this.isUserLoggedIn()) {
+            this.router.navigate(['user' + this.returnUrl]);
+          } else if (this.isAdminLoggedIn()) {
+            this.router.navigate(['admin' + this.returnUrl]);
+          }
         }
       );
   }
 
   ngOnDestroy() {
+  }
+
+  isUserLoggedIn() {
+    return this.tokenService.getUserType() === 1;
+  }
+
+  isAdminLoggedIn() {
+    return this.tokenService.getUserType() === 0;
   }
 
 }

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ExternalUserLayoutComponent } from './layouts/external-user-layout/external-user-layout.component';
 
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -45,6 +46,7 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    ExternalUserLayoutComponent,
     ExpansionComponent
   ],
   providers: [

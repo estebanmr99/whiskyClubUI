@@ -22,6 +22,7 @@ export class UserGuard implements CanActivate {
       }
       if (this.jwtService.getUserEmail()) {
           if (this.jwtService.getUserType() === 1) {
+            console.log('UserGuard: canActivate: true');
             return true;
           } else {
             return false;

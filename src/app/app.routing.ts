@@ -22,21 +22,21 @@ const routes: Routes =[
       }
     ]
   }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-      }
-    ]
-  }, {
-    path: '',
+    path: 'user',
     component: ExternalUserLayoutComponent,
     children: [
       {
         path: '',
         loadChildren: './layouts/external-user-layout/external-user-layout.module#ExternalUserLayoutModule'
+      }
+    ]
+  }, {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }
     ]
   }, {

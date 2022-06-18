@@ -24,6 +24,7 @@ export class AdminGuard implements CanActivate {
           if (this.jwtService.getUserType() === 0) {
             return true;
           } else {
+            console.log('AdminGuard: canActivate: false');
             return false;
           }
       }
