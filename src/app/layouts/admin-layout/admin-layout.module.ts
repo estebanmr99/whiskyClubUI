@@ -17,6 +17,7 @@ import { InventoryComponent } from '../../pages/inventory/inventory.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
 import { ReportsComponent } from '../../pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
+import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-products.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-ord
     InventoryComponent,
     OrdersComponent,
     ReportsComponent,
-    ViewOrderDetailComponent
+    ViewOrderDetailComponent,
+    WiskyProductsComponent
   ]
 })
 

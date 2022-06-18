@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
     { path: '/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
     { path: '/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
+    { path: '/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 @Component({

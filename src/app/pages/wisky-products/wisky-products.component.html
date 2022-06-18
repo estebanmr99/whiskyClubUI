@@ -1,0 +1,121 @@
+<div class="header bg-gradient-danger pb-5 pt-5 pt-md-5">
+  <div class="container-fluid">
+    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex searchForm">
+      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+        <div class="input-group input-group-alternative" style="border-radius: 0.5rem !important;">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true" (blur)="focus = false">
+        </div>
+      </div>
+      <button type="button" class="btn btn-success" style="margin-left: 1rem;">Search</button>
+    </form>
+  </div>
+</div>
+
+<!--Filtrado-->
+<div class="acordions card-remove">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="showPanel" hideToggle>
+        <mat-panel-title>
+          <button mat-stroked-button color="primary">
+            Show/Hide Filters
+          </button>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="mb-4 mb-xl-0 d-flex flex-row py-3 h-100">
+        <div>
+          <h3 class="mb-0" style="display: inline-block; margin-right: 0.5rem;">Price</h3>
+          <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1000" min="0" max="100000"
+            aria-label="units"></mat-slider>
+        </div>
+        <div style="margin-left: 1rem;">
+          <h3 class="mb-0" style="display: inline-block;">Type</h3>
+          <mat-form-field style="max-width: 12rem; margin-left: 1rem;">
+            <mat-select #select (opened)="s1(select)" placeholder="Ascending" (closed)="s2(select)"
+              floatPlaceholder="never">
+              <mat-option value="option1">Popularity</mat-option>
+              <mat-option value="option2">Ascending</mat-option>
+              <mat-option value="option3">Descending</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="min-width: 8rem; margin-left: 1rem;">
+          <h3 class="mb-0" style="display: inline-block; margin-right: 0.5rem;">Distance</h3>
+          <div class="input-margin" style="display: -webkit-inline-box; max-width: 5rem;">
+            <input id="typeahead-basic" type="number" class="form-control" placeholder="KM"
+              formControlName="localPrice" />
+          </div>
+        </div>
+        <div style="margin-left: 1rem;">
+          <button class="btn btn-icon btn-3 btn-primary mr-auto mb-2" type="button" (click)="filterProducts()">
+            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+            <span class="btn-inner--text">Filter</span>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<!-- Page content -->
+<div class="test">
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0" style="display: inline-block;">Order by</h3>
+          <mat-form-field style="max-width: 6rem; margin-left: 1rem;">
+            <mat-select #select (opened)="s1(select)" placeholder="Ascending" (closed)="s2(select)"
+              floatPlaceholder="never">
+              <mat-option value="option1">Popularity</mat-option>
+              <mat-option value="option2">Ascending</mat-option>
+              <mat-option value="option3">Descending</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form>
+        <div *ngFor="let test of test;">
+          <div class="card card-body">
+            <div class="d-flex flex-row" style="align-items: center;">
+              <img width="100" height="100" src="./../../../assets/img/theme/sub1.jpeg" alt="Card image cap">
+              <div class="d-flex flex-column" style="margin-left: 1.5rem; margin-right: 1.5rem;">
+                <h5 class="card-title" style="font-size: medium;"><b>{{test.name}}</b></h5>
+                <p class="card-text">{{test.name}}
+                </p>
+                <div class="d-flex flex-row">
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>Price:</b></h5>
+                  ${{test.localPrice}}
+                </div>
+                <div class="d-flex flex-row">
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>Nearest store:</b></h5>
+                  {{test.nearestStore}} <i class="ni ni-pin-3" style="margin-left: 0.1rem;"></i>
+                </div>
+              </div>
+              <div class="d-flex flex-row" style="align-items: center; margin-left: auto;">
+                <button class="icon icon-shape bg-dark text-white rounded-circle shadow"
+                  style="width: 2rem; height: 2rem;">
+                  <i class="ni ni-fat-delete"></i>
+                </button>
+                <div class="icon icon-shape quantity-selector text-dark rounded-circle shadow"
+                  style="width: 1rem; height: 1rem;">
+                  {{1}}
+                </div>
+                <button class="icon icon-shape bg-dark text-white rounded-circle shadow"
+                  style="width: 2rem; height: 2rem;">
+                  <i class="ni ni-fat-add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

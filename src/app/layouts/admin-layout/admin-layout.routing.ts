@@ -10,6 +10,7 @@ import { InventoryComponent } from 'src/app/pages/inventory/inventory.component'
 import { OrdersComponent } from 'src/app/pages/orders/orders.component';
 import { ReportsComponent } from 'src/app/pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
+import { WiskyProductsComponent } from 'src/app/pages/wisky-products/wisky-products.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'products',           component: ProductComponent, canActivate: [AuthorizeGuard] },
@@ -21,4 +22,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard] },
     { path: 'reports',           component: ReportsComponent, canActivate: [AuthorizeGuard] },
     { path: 'order-detail/:idOrder',           component: ViewOrderDetailComponent, canActivate: [AuthorizeGuard] },
+    { path: 'wisky-products',           component: WiskyProductsComponent, canActivate: [AuthorizeGuard] },
 ];
