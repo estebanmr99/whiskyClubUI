@@ -33,7 +33,7 @@ export class EmployeeComponent implements OnInit {
         ]
       },
       {
-        counry: 'Scotlan',
+        counry: 'Scotland',
         stores: [
           { StoreName: 'Inverness' },
           { StoreName: 'Glasgow' },
@@ -112,7 +112,7 @@ updateStoreEmployee(){
   if (this.editForm.invalid) {
     return;
   }
- 
+
   this.employeesService.updateStoreEmployee(this.editForm,this.EditidStore,this.idEmployee).subscribe(
     (data) => {
       console.log("Succes: ", data);
@@ -124,7 +124,7 @@ updateStoreEmployee(){
 }
 
 insertStoreEmployee(){
- 
+
   if (this.createForm.invalid) {
     return;
   }
@@ -156,7 +156,7 @@ deleteStoreEmployee(){
 }
 
 setEditForm() {
-  
+
   this.editForm.get('name').setValue(this.infoEmployee[0].name);
   this.editForm.get('lastName').setValue(this.infoEmployee[0].lastName);
   this.editForm.get('birthDate').setValue(this.infoEmployee[0].birthDate);

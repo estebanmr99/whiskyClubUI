@@ -10,20 +10,20 @@ declare interface RouteInfo {
 }
 
 export const ROUTESADMIN: RouteInfo[] = [
-    { path: '/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
-    { path: '/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
-    { path: '/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
-    { path: '/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
-    { path: '/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
-    { path: '/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
-    { path: '/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
-    { path: '/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
+    { path: '/admin/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
+    { path: '/admin/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
+    { path: '/admin/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
+    { path: '/admin/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
+    { path: '/admin/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
+    { path: '/admin/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
+    { path: '/admin/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
+    { path: '/admin/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 export const ROUTESUSER: RouteInfo[] = [
-  { path: '/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
-  { path: '/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
-  { path: '/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
+  { path: '/user/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
+  { path: '/user/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
+  { path: '/user/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 @Component({
