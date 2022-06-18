@@ -12,7 +12,6 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { DasbhoardComponent } from './dasbhoard/dasbhoard.component';
 import { ExpansionComponent } from './dashboard/expansion/expansion.component';
 import { MaterialModule } from './material/material.module';
 
@@ -23,6 +22,8 @@ import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
+import { AdminGuard } from './services/admin-guard.service';
+import { UserGuard } from './services/user-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
@@ -44,7 +45,6 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    DasbhoardComponent,
     ExpansionComponent
   ],
   providers: [
@@ -55,6 +55,8 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     EmployeesService,
     OrdersService,
     AuthorizeGuard,
+    AdminGuard,
+    UserGuard,
     JWTTokenService,
     LocalStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor, multi: true }

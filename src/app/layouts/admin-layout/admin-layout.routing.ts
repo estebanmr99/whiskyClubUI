@@ -11,16 +11,17 @@ import { OrdersComponent } from 'src/app/pages/orders/orders.component';
 import { ReportsComponent } from 'src/app/pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
 import { WiskyProductsComponent } from 'src/app/pages/wisky-products/wisky-products.component';
+import { AdminGuard } from 'src/app/services/admin-guard.service';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'products',           component: ProductComponent, canActivate: [AuthorizeGuard] },
-    { path: 'product-profile/:id',   component: ProductProfileComponent, canActivate: [AuthorizeGuard] },
-    { path: 'create-products',           component: CreateProductsComponent, canActivate: [AuthorizeGuard] },
-    { path: 'subscription',           component: SubscriptionComponent, canActivate: [AuthorizeGuard] },
-    { path: 'employee',           component: EmployeeComponent, canActivate: [AuthorizeGuard] },
-    { path: 'inventory',           component: InventoryComponent, canActivate: [AuthorizeGuard] },
-    { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard] },
-    { path: 'reports',           component: ReportsComponent, canActivate: [AuthorizeGuard] },
-    { path: 'order-detail/:idOrder',           component: ViewOrderDetailComponent, canActivate: [AuthorizeGuard] },
-    { path: 'wisky-products',           component: WiskyProductsComponent, canActivate: [AuthorizeGuard] },
+    { path: 'products',           component: ProductComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'product-profile/:id',   component: ProductProfileComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'create-products',           component: CreateProductsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'subscription',           component: SubscriptionComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'employee',           component: EmployeeComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'inventory',           component: InventoryComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'reports',           component: ReportsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'order-detail/:idOrder',           component: ViewOrderDetailComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'wisky-products',           component: WiskyProductsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
 ];

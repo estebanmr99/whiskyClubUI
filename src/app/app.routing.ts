@@ -5,12 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ExternalUserLayoutComponent } from './layouts/external-user-layout/external-user-layout.component';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'products',
+    redirectTo: 'wisky-products',
     pathMatch: 'full',
+  }, {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+      }
+    ]
   }, {
     path: '',
     component: AdminLayoutComponent,
@@ -22,16 +32,16 @@ const routes: Routes =[
     ]
   }, {
     path: '',
-    component: AuthLayoutComponent,
+    component: ExternalUserLayoutComponent,
     children: [
       {
         path: '',
-        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+        loadChildren: './layouts/external-user-layout/external-user-layout.module#ExternalUserLayoutModule'
       }
     ]
   }, {
     path: '**',
-    redirectTo: 'products'
+    redirectTo: 'wisky-products'
   }
 ];
 
