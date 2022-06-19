@@ -10,19 +10,18 @@ export class EmployeesService {
 
   constructor(private http: HttpClient) { }
 
-  getStoreEmployees(idStore: string,country: string): Observable<any> {
-    const body = { idStore:idStore,country:country};
+  getStoreEmployees(idStore: string, country: string): Observable<any> {
+    const body = { idStore: idStore, country: country};
     return this.http.post<any>('http://localhost:3000/employee/getStoreEmployees', body);
   }
 
-  
-  getStoreEmployee(idStore: string, idEmployee: string,country: string): Observable<any> {
+
+  getStoreEmployee(idStore: string, idEmployee: string, country: string): Observable<any> {
     const body = { idStore: idStore, idEmployee: idEmployee,country: country};
     return this.http.post<any>('http://localhost:3000/employee/getStoreEmployee', body);
   }
 
-
-  updateStoreEmployee(employeeFormInfo: FormGroup, store: string, idEmployee: string,country: string): Observable<any> {
+  updateStoreEmployee(employeeFormInfo: FormGroup, store: string, idEmployee: string, country: string): Observable<any> {
     const body = {
       store: store,
       idEmployee: idEmployee,
@@ -36,8 +35,7 @@ export class EmployeesService {
     return this.http.put<any>('http://localhost:3000/employee/updateStoreEmployee', body);
   }
 
-
-  insertStoreEmployee(employeeFormInfo: FormGroup, store: string,country: string ): Observable<any> {
+  insertStoreEmployee(employeeFormInfo: FormGroup, store: string, country: string): Observable<any> {
     const body = {
       store: store,
       name: employeeFormInfo.value.name,
@@ -50,10 +48,8 @@ export class EmployeesService {
     return this.http.put<any>('http://localhost:3000/employee/insertStoreEmployee', body);
   }
 
-
-  deleteStoreEmployee(idStore: string, idEmployee: string,country:string): Observable<any> {
-    const body = { store: idStore, idEmployee: idEmployee,country:country };
+  deleteStoreEmployee(idStore: string, idEmployee: string, country: string): Observable<any> {
+    const body = { store: idStore, idEmployee: idEmployee, country: country };
     return this.http.put<any>('http://localhost:3000/employee/deleteStoreEmployee', body);
   }
-
 }

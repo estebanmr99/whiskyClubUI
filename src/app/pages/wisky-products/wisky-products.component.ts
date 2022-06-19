@@ -25,7 +25,6 @@ export class WiskyProductsComponent implements OnInit {
   typesList: Array<any> = [];
 
   order = new FormControl();
-
   allProducts: any[] = [];
 
   constructor(private tokenService: JWTTokenService,
@@ -39,12 +38,10 @@ export class WiskyProductsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  s1(sel: MatSelect) {
-    sel.placeholder = '';
-  }
-
-  s2(sel: MatSelect) {
+  clearDropdown(sel: MatSelect) {
     if (sel.value === undefined) {
+      sel.placeholder = '';
+    } else {
       sel.placeholder = '';
     }
   }

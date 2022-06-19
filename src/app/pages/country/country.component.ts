@@ -26,7 +26,7 @@ export class CountryComponent implements OnInit {
       this.submitted = false;
     }
 
-  choice() {
+  onChoice() {
     this.submitted = true;
     switch (this.selectedCountry) {
       case 'United States':

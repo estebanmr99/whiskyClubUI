@@ -14,7 +14,6 @@
   </div>
 </div>
 
-<!--Filtrado-->
 <div class="acordions card-remove">
   <mat-accordion>
     <mat-expansion-panel>
@@ -34,8 +33,8 @@
         <div style="margin-left: 1rem;">
           <h3 class="mb-0" style="display: inline-block;">Type</h3>
           <mat-form-field style="max-width: 12rem; margin-left: 1rem;">
-            <mat-select #select [formControl]="types" (opened)="s1(select)"
-              placeholder="" (closed)="s2(select)" floatPlaceholder="never">
+            <mat-select #select [formControl]="types" (opened)="clearDropdown(select)"
+              placeholder="" (closed)="clearDropdown(select)" floatPlaceholder="never">
               <mat-option *ngFor="let type of typesList" [value]="type.name">{{ type.name }}
               </mat-option>
             </mat-select>
@@ -59,14 +58,14 @@
 </div>
 
 <!-- Page content -->
-<div class="test">
+<div class="containerDiv">
   <div class="card bg-secondary shadow">
     <div class="card-header bg-white border-0">
       <div class="row align-items-center">
         <div class="col-8">
           <h3 class="mb-0" style="display: inline-block;">Order by</h3>
           <mat-form-field style="max-width: 6rem; margin-left: 1rem;">
-            <mat-select #select [formControl]="order" (selectionChange)="onOrderChange()" (opened)="s1(select)" placeholder="Order" (closed)="s2(select)"
+            <mat-select #select [formControl]="order" (selectionChange)="onOrderChange()" (opened)="clearDropdown(select)" placeholder="Order" (closed)="clearDropdown(select)"
               floatPlaceholder="never">
               <mat-option value="Popularity">Popularity</mat-option>
               <mat-option value="Ascending">Ascending</mat-option>

@@ -1,18 +1,3 @@
-.importCSV {
-  margin: 1.5rem;
-
-  .button {
-    //left: -12%!important;
-    color: gray;
-    width: 8rem;
-    height: 4rem;
-  }
-
-  .saveButtons {
-    width: 8rem;
-    height: 4rem;
-  }
-}
 .acordions {
   background: transparent !important;
   margin-bottom: 7rem;
@@ -260,7 +245,7 @@
 
 .card
 {
-  
+
     position: relative;
 
     display: flex;
@@ -271,7 +256,7 @@
     word-wrap: break-word;
 
     border: 1px solid rgba(0, 0, 0, .05);
-    border-radius: .375rem; 
+    border-radius: .375rem;
     background-color: #fff;
     background-clip: border-box;
 }

@@ -35,16 +35,13 @@ export class InventoryComponent implements OnInit {
   ];
 
   error: string;
-
   productInformation: any = {};
 
   stores = new FormControl();
+
   storesInfoList: Array<any> = [];
-
   productsInfoList: Array<any> = [];
-
   allStoresInventoryList: Array<any> = [];
-
   tableStoreInventoryList: Array<any> = [];
 
   constructor(

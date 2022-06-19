@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTESADMIN } from '../sidebar/sidebar.component';
 import { ROUTESUSER } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { JWTTokenService } from '../../services/jwttoken.service';
@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     location: Location,
-    private element: ElementRef,
     private router: Router,
     private userService: UserService,
     private jwtService: JWTTokenService
@@ -56,12 +55,6 @@ export class NavbarComponent implements OnInit {
         if(this.listTitles[item].path === titlee){
             return this.listTitles[item].title;
         }
-    }
-    if (titlee.split("/")[1] == "student-profile"){
-      title = "Perfil de estudiante"
-    }
-    if (titlee.split("/")[1] == "product-profile"){
-      title = "Perfil de producto"
     }
     return title;
   }

@@ -10,12 +10,10 @@ export class ViewOrderDetailComponent implements OnInit {
 
   idOrder: string;
 
-  constructor(private rutaActiva: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    this.idOrder= this.rutaActiva.snapshot.params.idOrder;
-    
+    this.idOrder = this.activatedRoute.snapshot.params.idOrder;
   }
 
 }

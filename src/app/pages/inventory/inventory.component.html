@@ -33,8 +33,9 @@
           <th class="thead-light th " mat-header-cell *matHeaderCellDef>
           </th>
           <td class="td" mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation();selectSingleRow(row)" (change)="$event ? selection.toggle(row) : null"
-              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+            <mat-checkbox (click)="$event.stopPropagation();selectSingleRow(row)"
+              (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)">
             </mat-checkbox>
           </td>
         </ng-container>
@@ -66,7 +67,8 @@
       </mat-paginator>
     </div>
 
-    <form [formGroup]="productForm" (ngSubmit)="updateInventory()" style="display: inline-block; vertical-align:top; margin-left: 5%;">
+    <form [formGroup]="productForm" (ngSubmit)="updateInventory()"
+      style="display: inline-block; vertical-align:top; margin-left: 5%;">
       <div class="card card-profile shadow" style="display: inline-block !important;">
         <h1 class="text-center" style="margin-top: 1rem;">Change in store product</h1>
         <div class="card-body pt-0 pt-md-4">
@@ -76,12 +78,7 @@
                 <p>Inventory</p>
               </div>
               <div class="col-6 input-margin">
-                <input
-                  id="typeahead-basic"
-                  type="number"
-                  class="form-control"
-                  formControlName="inventory"
-                >
+                <input id="typeahead-basic" type="number" class="form-control" formControlName="inventory">
               </div>
             </div>
             <div class="row">
@@ -89,12 +86,7 @@
                 <p>Currency</p>
               </div>
               <div class="col-6 input-margin">
-                <input
-                  id="typeahead-basic"
-                  type="text"
-                  class="form-control"
-                  formControlName="currency"
-                />
+                <input id="typeahead-basic" type="text" class="form-control" formControlName="currency" />
               </div>
             </div>
             <div class="row">
@@ -102,12 +94,7 @@
                 <p>Local price</p>
               </div>
               <div class="col-6 input-margin">
-                <input
-                  id="typeahead-basic"
-                  type="number"
-                  class="form-control"
-                  formControlName="localPrice"
-                />
+                <input id="typeahead-basic" type="number" class="form-control" formControlName="localPrice" />
               </div>
             </div>
             <div class="row">
@@ -115,12 +102,7 @@
                 <p>Global price</p>
               </div>
               <div class="col-6 input-margin">
-                <input
-                  id="typeahead-basic"
-                  type="number"
-                  class="form-control"
-                  formControlName="globalPrice"
-                />
+                <input id="typeahead-basic" type="number" class="form-control" formControlName="globalPrice" />
               </div>
             </div>
           </div>

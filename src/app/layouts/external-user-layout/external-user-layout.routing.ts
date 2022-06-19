@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { AuthorizeGuard } from '../../services/authorize-guard.service';
 import { SubscriptionComponent } from 'src/app/pages/subscription/subscription.component';
 import { OrdersComponent } from 'src/app/pages/orders/orders.component';

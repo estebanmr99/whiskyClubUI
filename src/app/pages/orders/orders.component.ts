@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JWTTokenService } from '../../services/jwttoken.service';
 import { OrdersService } from '../../services/orders.service';
 import { Router } from '@angular/router';
@@ -13,12 +13,11 @@ export class OrdersComponent implements OnInit {
   displayedColumns: string[];
   dataOrders: any[];
 
-
   constructor(private tokenService: JWTTokenService,
     private orderService: OrdersService,
-    private router: Router) { 
+    private router: Router) {
 
-    this.displayedColumns= [
+    this.displayedColumns = [
       "date",
       "order",
       "total",
@@ -28,14 +27,14 @@ export class OrdersComponent implements OnInit {
   }
 
   viewOrderDetails(cod: number) {
-    
-    //console.log(this.dataOrders[cod].totalSale);
-    //console.log(this.tokenService.getId());
     var idOrder = this.dataOrders[cod].idSale;
-    this.router.navigate(['/order-detail',idOrder]);
-  
-
+    if (this.isUserLoggedIn()) {
+      this.router.navigate(["user/order-detail", idOrder]);
+    } else if (this.isAdminLoggedIn()) {
+      this.router.navigate(["admin/order-detail", idOrder]);
+    }
   }
+
   getOrders() {
     var idUser = this.tokenService.getId();
     this.orderService.getOrdersById(idUser).subscribe(
@@ -47,6 +46,14 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  isUserLoggedIn() {
+    return this.tokenService.getUserType() === 1;
+  }
+
+  isAdminLoggedIn() {
+    return this.tokenService.getUserType() === 0;
   }
 
 }

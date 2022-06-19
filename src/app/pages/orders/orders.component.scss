@@ -1,36 +1,24 @@
-.importCSV {
-    margin: 1.5rem;
-  
-    .button {
-      //left: -12%!important;
-      color: gray;
-      width: 8rem;
-      height: 4rem;
-    }
-  
-    .saveButtons {
-      width: 8rem;
-      height: 4rem;
-    }
-  }
   .acordions {
     background: transparent !important;
     margin-bottom: 7rem;
-  
+
     .card {
       background-color: transparent !important;
     }
   }
+
   .filterButton {
     button:active {
       border-color: blueviolet;
     }
+
     border-color: lightgray;
   }
+
   .showPanel {
     height: 5rem;
   }
-  
+
   .table {
     th {
       background-color: #f6f9fc;
@@ -39,40 +27,47 @@
       text-align: center;
       vertical-align: middle;
     }
+
     td {
       text-align: center;
       padding: 2em 0em !important;
       line-height: 2;
     }
+
     ::ng-deep .mat-sort-header-container {
       width: fit-content;
       margin: auto;
     }
-  
+
     ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
       background-color: transparent;
     }
-  
+
     ::ng-deep .mat-select-value {
       color: #005999;
       font-weight: bold;
       font-size: 15px;
     }
+
     ::ng-deep .mat-next-page {
       color: #005999;
     }
+
     ::ng-deep .mat-option {
       padding: 0 !important;
     }
+
     ::ng-deep .mat-option-text {
       text-align: right;
     }
+
     ::ng-deep .mat-paginator {
       border-radius: 0 0 calc(0.375rem - 1px) calc(0.375rem - 1px);
       padding: 1.25rem 1.5rem;
       background-color: #fff;
       border-bottom: 1px solid lightgray;
     }
+
     ::ng-deep .mat-paginator-navigation-next {
       display: flex;
       align-items: center;
@@ -87,6 +82,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-next :hover {
       background-color: lightgray;
       display: flex;
@@ -99,6 +95,7 @@
       height: 36px;
       font-size: 0.875rem;
     }
+
     ::ng-deep .mat-paginator-navigation-next :active {
       background-color: #5e72e4;
       border-color: #5e72e4;
@@ -114,6 +111,7 @@
       height: 36px;
       font-size: 0.875rem;
     }
+
     ::ng-deep .mat-paginator-navigation-previous {
       display: flex;
       align-items: center;
@@ -128,6 +126,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-previous :hover {
       background-color: lightgray;
       display: flex;
@@ -140,6 +139,7 @@
       height: 36px;
       font-size: 0.875rem;
     }
+
     ::ng-deep .mat-paginator-navigation-previous :active {
       background-color: #5e72e4;
       border-color: #5e72e4;
@@ -155,6 +155,7 @@
       height: 36px;
       font-size: 0.875rem;
     }
+
     ::ng-deep .mat-paginator-navigation-last {
       display: flex;
       align-items: center;
@@ -169,6 +170,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-first {
       display: flex;
       align-items: center;
@@ -183,6 +185,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-last :hover {
       background-color: lightgray;
       display: flex;
@@ -198,6 +201,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-first :hover {
       background-color: lightgray;
       display: flex;
@@ -213,6 +217,7 @@
       border-style: solid;
       border-width: thin;
     }
+
     ::ng-deep .mat-paginator-navigation-last :active {
       background-color: #5e72e4;
       border-color: #5e72e4;
@@ -228,6 +233,7 @@
       height: 36px;
       font-size: 0.875rem;
     }
+
     ::ng-deep .mat-paginator-navigation-first :active {
       display: flex;
       align-items: center;
@@ -244,17 +250,17 @@
       border-width: thin;
     }
   }
-  
+
   .editButton {
     float: right;
   }
-  
+
   .uploaderPanel {
     background: transparent !important;
     margin-bottom: 7rem;
+
     .matAcordion {
       -webkit-box-shadow: -50px -50px 0px -30px rgba(0, 0, 0, 0);
       box-shadow: -50px -50px 0px -30px rgba(0, 0, 0, 0);
     }
   }
-  

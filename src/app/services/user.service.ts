@@ -20,9 +20,9 @@ export class UserService {
     return this.http.post<any>('http://localhost:3000/user/login', body);
   }
 
-  subscription(idUser: string, idLevel: string,country:string): Observable<any> {
-    const body = { idUser: idUser, idLevel: idLevel,country:country };
-    return this.http.post<any>('http://localhost:3000/user/subscription', body);
+  addSubscription(idUser: string, idLevel: string,country:string): Observable<any> {
+    const body = { idUser: idUser, idLevel: idLevel, country:country };
+    return this.http.post<any>('http://localhost:3000/user/addSubscription', body);
   }
 
   register(userFormInfo: FormGroup, userDeliveryPosition: any): Observable<any> {

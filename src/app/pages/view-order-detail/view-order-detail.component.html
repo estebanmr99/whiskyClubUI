@@ -1,115 +1,79 @@
 <head>
-    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
 <div class="header bg-gradient-danger pb-5 pt-5 pt-md-5">
-    <div class="container-fluid">
-      
-    </div>
+  <div class="container-fluid">
+
   </div>
- 
-  <!--Filtrado-->
-  
-  <!-- Page content -->
-  
-<div> 
-    <br> 
-    <h5 style="color: rgb(162, 156, 156); margin-left: 10px; font-size:xx-large; "> <b>View your order details</b></h5> 
-    <br>
-    <div class="card" style="width: 68rem;  margin: 23px 23px; box-shadow: 2px 3px 17px; ">
-        <div class="card-body" style="display: inline-flex;">
-         <div>
-            <h5  
-            style="font-size: medium; color: grey;padding: 10px 100px;"><b>Shipping adress</b><i class="ni ni-delivery-fast"style="margin-left: 7px;"></i>
-            </h5> 
-            <div>
-                <form>
-                    <textarea class="form-control form-control-ShippingAdress" rows="3" placeholder="Shipping info ..." disabled></textarea>
-                  </form> 
-            </div> 
-        </div>
-        <div>
-            <h5  
-            style="font-size: medium; color: grey;padding: 10px 100px;"><b>Payment method</b><i class="ni ni-credit-card"style="margin-left: 7px;"></i>
+</div>
+
+<!-- Page content -->
+
+<div>
+  <br>
+  <h5 style="color: rgb(162, 156, 156); margin-left: 10px; font-size:xx-large; "> <b>View your order details</b></h5>
+  <br>
+  <div class="card" style="width: 68rem;  margin: 23px 23px; box-shadow: 2px 3px 17px; ">
+    <div class="card-body" style="display: inline-flex;">
+      <div>
+        <h5 style="font-size: medium; color: grey;padding: 10px 100px;"><b>Shipping adress</b><i
+            class="ni ni-delivery-fast" style="margin-left: 7px;"></i>
         </h5>
         <div>
-            <form>
-                <textarea class="form-control form-control-Payment" rows="3" placeholder="Payment method info ..." disabled></textarea>
-              </form>
-        </div>
-            
-        </div>        
-        <div>
-            <h5  
-            style="font-size: medium; color : grey; padding: 10px 100px;"><b>Order summary</b><i class="ni ni-bag-17" style="margin-left: 7px;"></i>
-        </h5>
-        <div>
-            <form>
-                <textarea class="form-control form-control-OrderSummary" rows="3" placeholder="Order summary info ..." disabled></textarea>
-              </form>
-        </div>
-            
-        </div>
-            
-         
-          
+          <form>
+            <textarea class="form-control form-control-ShippingAdress" rows="3" placeholder="Shipping info ..."
+              disabled></textarea>
+          </form>
         </div>
       </div>
-
-      <div class="card" style="width: 38rem;  margin: 23px 23px; box-shadow: 2px 3px 17px; ">
-        <div class="card-body" style="display: inline-flex;"> 
-            <div>
-                <h5  
-                style="font-size: larger; color: grey;padding: 10px 50px;"><b>Delivered on</b> 
-                </h5> 
-                <div>
-                    <form>
-                        <textarea class="form-control form-control-ShippingAdress" rows="3" placeholder="Date of delivery ..." disabled></textarea>
-                      </form> 
-                </div> 
-            </div>
-            <div style="display: inline-grid;" >
-                <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-left: 20px; margin-top: 10px;">
-                    <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
-                    <span class="btn-inner--text"> Rate products</span>
-                  </button>
-                  <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-left: 20px; margin-top: 10px;">
-                    <span class="btn-inner--icon"><i class="ni ni-single-02"></i></span>
-                    <span class="btn-inner--text">Rate employees</span>
-                  </button>
-            </div>
-
-    </div>
-    </div>
-</div>
-  
-  
-
-  
-  <!--pie de pagina-->
-  <!-- <div class="uploaderPanel card-remove">
-    <mat-accordion class="matAcordion">
-      <mat-expansion-panel class="matAcordion">
-        <mat-expansion-panel-header class="showPanel" hideToggle>
-          <mat-panel-title>
-            <button mat-fab color="primary">
-              <mat-icon>attach_file</mat-icon>
-            </button>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="mb-4 mb-xl-0 d-flex flex-row py-3 h-100">
-          <div class="d-flex flex-column bg-transparent">
-            <form [formGroup]="form" (ngSubmit)="submitForm()">
-              <div class="form-group">
-                  <input type="file" (change)="uploadFile($event)">
-              </div>
-              <div class="form-group">
-                <button mat-stroked-button color="primary">Importar</button>
-  
-              </div>
+      <div>
+        <h5 style="font-size: medium; color: grey;padding: 10px 100px;"><b>Payment method</b><i
+            class="ni ni-credit-card" style="margin-left: 7px;"></i>
+        </h5>
+        <div>
+          <form>
+            <textarea class="form-control form-control-Payment" rows="3" placeholder="Payment method info ..."
+              disabled></textarea>
           </form>
-          </div>
         </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div> -->
-  
+      </div>
+      <div>
+        <h5 style="font-size: medium; color : grey; padding: 10px 100px;"><b>Order summary</b><i class="ni ni-bag-17"
+            style="margin-left: 7px;"></i>
+        </h5>
+        <div>
+          <form>
+            <textarea class="form-control form-control-OrderSummary" rows="3" placeholder="Order summary info ..."
+              disabled></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 38rem;  margin: 23px 23px; box-shadow: 2px 3px 17px; ">
+    <div class="card-body" style="display: inline-flex;">
+      <div>
+        <h5 style="font-size: larger; color: grey;padding: 10px 50px;"><b>Delivered on</b>
+        </h5>
+        <div>
+          <form>
+            <textarea class="form-control form-control-ShippingAdress" rows="3" placeholder="Date of delivery ..."
+              disabled></textarea>
+          </form>
+        </div>
+      </div>
+      <div style="display: inline-grid;">
+        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-left: 20px; margin-top: 10px;">
+          <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+          <span class="btn-inner--text"> Rate products</span>
+        </button>
+        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-left: 20px; margin-top: 10px;">
+          <span class="btn-inner--icon"><i class="ni ni-single-02"></i></span>
+          <span class="btn-inner--text">Rate employees</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
