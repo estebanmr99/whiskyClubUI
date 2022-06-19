@@ -10,7 +10,6 @@ declare interface RouteInfo {
 }
 
 export const ROUTESADMIN: RouteInfo[] = [
-    { path: '/admin/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
     { path: '/admin/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
     { path: '/admin/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
     { path: '/admin/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
