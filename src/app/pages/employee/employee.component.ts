@@ -36,7 +36,7 @@ export class EmployeeComponent implements OnInit {
         ]
       },
       {
-        counry: 'Scotlan',
+        counry: 'Scotland',
         stores: [
           { StoreName: 'Inverness' },
           { StoreName: 'Glasgow' },
@@ -132,7 +132,7 @@ updateStoreEmployee(){
 }
 
 insertStoreEmployee(){
- 
+
   if (this.createForm.invalid) {
     return;
   }

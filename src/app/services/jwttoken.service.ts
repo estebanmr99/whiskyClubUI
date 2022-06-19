@@ -47,6 +47,11 @@ export class JWTTokenService {
       return this.decodedToken ? this.decodedToken._id : null;
     }
 
+    getUserType() {
+      this.decodeToken();
+      return this.decodedToken ? +this.decodedToken._idUserType : null;
+    }
+
     getExpiryTime() {
       this.decodeToken();
       return this.decodedToken ? +this.decodedToken.exp : 0;

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DasbhoardComponent } from './dasbhoard.component';
+import { WiskyProductsComponent } from './wisky-products.component';
 
-describe('DasbhoardComponent', () => {
-  let component: DasbhoardComponent;
-  let fixture: ComponentFixture<DasbhoardComponent>;
+describe('WiskyProductsComponent', () => {
+  let component: WiskyProductsComponent;
+  let fixture: ComponentFixture<WiskyProductsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DasbhoardComponent ]
+      declarations: [ WiskyProductsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DasbhoardComponent);
+    fixture = TestBed.createComponent(WiskyProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

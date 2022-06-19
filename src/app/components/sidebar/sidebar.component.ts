@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JWTTokenService } from 'src/app/services/jwttoken.service';
 
 declare interface RouteInfo {
     path: string;
@@ -8,14 +9,21 @@ declare interface RouteInfo {
     class: string;
 }
 
-export const ROUTES: RouteInfo[] = [
-    { path: '/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
-    { path: '/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
-    { path: '/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
-    { path: '/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
-    { path: '/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
-    { path: '/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
-    { path: '/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
+export const ROUTESADMIN: RouteInfo[] = [
+    { path: '/admin/products', title: 'Productos',  icon: 'ni-archive-2 text-blue', class: '' },
+    { path: '/admin/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
+    { path: '/admin/create-products', title: 'Create products',  icon: 'ni-settings text-green', class: '' },
+    { path: '/admin/inventory', title: 'Inventory',  icon: 'ni-archive-2 text-red', class: '' },
+    { path: '/admin/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
+    { path: '/admin/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
+    { path: '/admin/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
+    { path: '/admin/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
+];
+
+export const ROUTESUSER: RouteInfo[] = [
+  { path: '/user/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
+  { path: '/user/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
+  { path: '/user/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 @Component({
@@ -28,12 +36,24 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private tokenService: JWTTokenService) { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    if (this.isUserLoggedIn()) {
+      this.menuItems = ROUTESUSER.filter(menuItem => menuItem);
+    } else if (this.isAdminLoggedIn()) {
+      this.menuItems = ROUTESADMIN.filter(menuItem => menuItem);
+    }
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+  }
+
+  isUserLoggedIn() {
+    return this.tokenService.getUserType() === 1;
+  }
+
+  isAdminLoggedIn() {
+    return this.tokenService.getUserType() === 0;
   }
 }

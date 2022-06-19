@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
+import { ROUTESADMIN } from '../sidebar/sidebar.component';
+import { ROUTESUSER } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -28,8 +29,20 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    if (this.isUserLoggedIn()) {
+      this.listTitles = ROUTESUSER.filter(listTitle => listTitle);
+    } else if (this.isAdminLoggedIn()){
+      this.listTitles = ROUTESADMIN.filter(listTitle => listTitle);
+    }
     this.username = this.jwtService.getUserEmail().toUpperCase();
+  }
+
+  isUserLoggedIn() {
+    return this.jwtService.getUserType() === 1;
+  }
+
+  isAdminLoggedIn() {
+    return this.jwtService.getUserType() === 0;
   }
 
   getTitle(){

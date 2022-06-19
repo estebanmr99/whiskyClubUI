@@ -47,5 +47,6 @@ export class UserService {
     this.userValue = false;
     this.jwtService.removeToken();
     this.localStorageService.remove('token');
+    this.localStorageService.remove('country');
   }
 }

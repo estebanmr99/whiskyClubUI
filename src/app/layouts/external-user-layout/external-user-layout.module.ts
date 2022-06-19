@@ -5,24 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
-import { AdminLayoutRoutes } from './admin-layout.routing';
-import { ProductProfileComponent } from '../../pages/product-profile/product-profile.component';
-import { ProductComponent } from '../../pages/products/product.component';
+import { ExternalUserLayoutRoutes } from './external-user-layout.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../../material/material.module';
 import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
-import { EmployeeComponent } from '../../pages/employee/employee.component';
-import { CreateProductsComponent } from '../../pages/create-products/create-products.component';
-import { InventoryComponent } from '../../pages/inventory/inventory.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
-import { ReportsComponent } from '../../pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
 import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-products.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
+    RouterModule.forChild(ExternalUserLayoutRoutes),
     FormsModule,
     HttpClientModule,
     NgbModule,
@@ -31,17 +25,11 @@ import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-product
     ReactiveFormsModule
   ],
   declarations: [
-    ProductComponent,
-    ProductProfileComponent,
     SubscriptionComponent,
-    EmployeeComponent,
-    CreateProductsComponent,
-    InventoryComponent,
     OrdersComponent,
-    ReportsComponent,
     ViewOrderDetailComponent,
     WiskyProductsComponent
   ]
 })
 
-export class AdminLayoutModule {}
+export class ExternalUserLayoutModule {}

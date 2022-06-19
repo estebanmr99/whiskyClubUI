@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 
 import { LocalStorageService } from '../../services/local-storage.service'
+import { JWTTokenService } from 'src/app/services/jwttoken.service';
 
 @Component({
   selector: 'app-login',
@@ -18,17 +19,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitted = false;
   returnUrl: string;
   error = '';
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private tokenService: JWTTokenService
   ) {
     // redirect to home if already logged in
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
-      this.router.navigate(['/products']);
+      this.router.navigate(['/wisky-products']);
     }
     var country = this.localStorageService.get('country');
     if (country === null) {
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/products';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/wisky-products';
   }
 
   // convenience getter for easy access to form fields
@@ -79,12 +80,27 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
         () => {
-          this.router.navigate([this.returnUrl]);
+          if (this.tokenService.getToken() == null){
+            this.tokenService.setToken(this.localStorageService.get('token'));
+          }
+          if (this.isUserLoggedIn()) {
+            this.router.navigate(['user' + this.returnUrl]);
+          } else if (this.isAdminLoggedIn()) {
+            this.router.navigate(['admin' + this.returnUrl]);
+          }
         }
       );
   }
 
   ngOnDestroy() {
+  }
+
+  isUserLoggedIn() {
+    return this.tokenService.getUserType() === 1;
+  }
+
+  isAdminLoggedIn() {
+    return this.tokenService.getUserType() === 0;
   }
 
 }

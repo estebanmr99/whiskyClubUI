@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
-      this.router.navigate(['/products']);
+      this.router.navigate(['/wisky-products']);
     }
 
     this.userService.userValue = false;

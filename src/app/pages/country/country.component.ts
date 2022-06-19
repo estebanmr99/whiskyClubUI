@@ -19,7 +19,7 @@ export class CountryComponent implements OnInit {
     ) {
       this.countryOptions = [
         'United States',
-        'Scotlan',
+        'Scotland',
         'Ireland'
       ];
       this.selectedCountry = '';
@@ -32,7 +32,7 @@ export class CountryComponent implements OnInit {
       case 'United States':
         this.localStorage.set('country', this.selectedCountry);
         break;
-      case 'Scotlan':
+      case 'Scotland':
         this.localStorage.set('country', this.selectedCountry);
         break;
       case 'Ireland':

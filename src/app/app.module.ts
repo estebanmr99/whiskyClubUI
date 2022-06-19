@@ -7,12 +7,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ExternalUserLayoutComponent } from './layouts/external-user-layout/external-user-layout.component';
 
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { DasbhoardComponent } from './dasbhoard/dasbhoard.component';
 import { ExpansionComponent } from './dashboard/expansion/expansion.component';
 import { MaterialModule } from './material/material.module';
 
@@ -22,12 +22,15 @@ import { AttributesService } from './services/attributes.service';
 import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
 import { CreateProductService } from './services/create-product.service';
+import { InventoryService } from './services/inventory.service';
+import { WiskyProductService } from './services/wisky-product.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
+import { AdminGuard } from './services/admin-guard.service';
+import { UserGuard } from './services/user-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
-
 
 @NgModule({
   imports: [
@@ -45,7 +48,7 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    DasbhoardComponent,
+    ExternalUserLayoutComponent,
     ExpansionComponent
   ],
   providers: [
@@ -57,8 +60,12 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     OrdersService,
     CreateProductService,
     AuthorizeGuard,
+    AdminGuard,
+    UserGuard,
     JWTTokenService,
     LocalStorageService,
+    InventoryService,
+    WiskyProductService,
     { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
