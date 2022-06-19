@@ -12,6 +12,6 @@ export class OrdersService {
 
   getOrdersById(idUser: string): Observable<any> {
     const body = { };
-    return this.http.get<any>('http://localhost:3000/orders/getOrdersById' + idUser, body);
+    return this.http.get<any>('http://localhost:3000/orders/getOrdersById/' + idUser, body);
   }
 }

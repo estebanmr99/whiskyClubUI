@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 export class OrdersComponent implements OnInit {
 
   displayedColumns: string[];
-  dataOrders: any[] = [{idSale:1,createDate:"12-2-20202",totalSale:20},
-                  {idSale:2,createDate:"12-2-20202",totalSale:200}];
+  dataOrders: any[];
 
 
   constructor(private tokenService: JWTTokenService,

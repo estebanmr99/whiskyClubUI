@@ -36,10 +36,9 @@ export class SubscriptionComponent implements OnInit {
 
     this.userService.subscription(iduser,id,country).subscribe(
       (data) => {
-        console.log("data: ", data);
       },
       (error) => {
-        console.log("Error: ", error);
+        console.log("ErroR: ", error);
       }
     );
 

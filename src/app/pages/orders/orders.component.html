@@ -13,7 +13,7 @@
         <table mat-table [dataSource]="dataOrders" matSort class="mat-elevation-z8 w-100">
 
             <ng-container matColumnDef="date">
-                <th class="thead-light  th " mat-header-cell *matHeaderCellDef> Date </th>
+                <th class="thead-light  th " type="date" mat-header-cell *matHeaderCellDef> Date </th>
                 <td mat-cell *matCellDef="let element"> {{element.createDate}} </td>">
             </ng-container>
             <ng-container matColumnDef="order">

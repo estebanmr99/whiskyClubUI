@@ -15,6 +15,9 @@ export class EmployeeComponent implements OnInit {
   idEmployee: string;
   EditidStore: string;
   InsertidStore: string;
+  updateCountry: string;
+  searchCountry: string;
+  insertCountry: string;
   loading = false;
 
   countryName = new FormControl();
@@ -77,7 +80,10 @@ onFormSubmit() {
 getEmployees(Store: String){
 
   this.idStore = this.selectStore(Store);
-  this.employeesService.getStoreEmployees(this.idStore).subscribe(
+  this.searchCountry = this.selectCountry(Store);
+  this.updateCountry = this.searchCountry;
+
+  this.employeesService.getStoreEmployees(this.idStore,this.searchCountry).subscribe(
     (data) => {
       this.allEmployeesSotore = data;
     },
@@ -91,10 +97,10 @@ getEmployees(Store: String){
 
 getEmployee(employee: String){
 
-  let infoEmployee = this.allEmployeesSotore.find(x => x.name == employee);
+  let infoEmployee = this.allEmployeesSotore.find(x => x.Ep[0].name == employee);
   this.idEmployee = infoEmployee.idEmployee;
 
-  this.employeesService.getStoreEmployee(this.idStore,this.idEmployee).subscribe(
+  this.employeesService.getStoreEmployee(this.idStore,this.idEmployee,this.searchCountry).subscribe(
     (data) => {
       this.infoEmployee = data;
     },
@@ -112,8 +118,10 @@ updateStoreEmployee(){
   if (this.editForm.invalid) {
     return;
   }
+
+  
  
-  this.employeesService.updateStoreEmployee(this.editForm,this.EditidStore,this.idEmployee).subscribe(
+  this.employeesService.updateStoreEmployee(this.editForm,this.EditidStore,this.idEmployee,this.updateCountry).subscribe(
     (data) => {
       console.log("Succes: ", data);
     },
@@ -128,8 +136,8 @@ insertStoreEmployee(){
   if (this.createForm.invalid) {
     return;
   }
-
-  this.employeesService.insertStoreEmployee(this.createForm,this.InsertidStore).subscribe(
+  
+  this.employeesService.insertStoreEmployee(this.createForm,this.InsertidStore,this.insertCountry).subscribe(
     (data) => {
       console.log("Succes: ", data);
     },
@@ -145,7 +153,7 @@ deleteStoreEmployee(){
     return;
   }
 
-  this.employeesService.deleteStoreEmployee(this.idStore,this.idEmployee).subscribe(
+  this.employeesService.deleteStoreEmployee(this.idStore,this.idEmployee,this.updateCountry).subscribe(
     (data) => {
       console.log("Succes: ", data);
     },
@@ -157,19 +165,21 @@ deleteStoreEmployee(){
 
 setEditForm() {
   
-  this.editForm.get('name').setValue(this.infoEmployee[0].name);
-  this.editForm.get('lastName').setValue(this.infoEmployee[0].lastName);
-  this.editForm.get('birthDate').setValue(this.infoEmployee[0].birthDate);
+  this.editForm.get('name').setValue(this.infoEmployee[0].Ep[0].name);
+  this.editForm.get('lastName').setValue(this.infoEmployee[0].Ep[0].lastName);
+  this.editForm.get('birthDate').setValue(this.infoEmployee[0].Ep[0].birthDate);
   this.editForm.get('localSalary').setValue(this.infoEmployee[0].localSalary);
   this.editForm.get('globalSalary').setValue(this.infoEmployee[0].globalSalary);
 }
 
 getEditSotore(Store: String){
   this.EditidStore = this.selectStore(Store);
+  this.updateCountry = this.selectCountry(Store);
 }
 
 getInsertSotore(Store: String){
   this.InsertidStore = this.selectStore(Store);
+  this.insertCountry = this.selectCountry(Store);
 }
 
 selectStore(store: String){
@@ -196,6 +206,29 @@ selectStore(store: String){
       return '0';
   }
 }
-
+selectCountry(store: String){
+  switch (store) {
+    case 'Cork':
+      return 'Ireland';
+    case 'Galway':
+      return 'Ireland';
+    case 'Dublin':
+      return 'Ireland';
+    case 'Inverness':
+      return 'Scotlan';
+    case 'Glasgow':
+      return 'Scotlan';
+    case 'Edinburgh':
+      return 'Scotlan';
+    case 'Washington':
+      return 'United States';
+    case 'Los Angeles':
+      return 'United States';
+    case 'Dallas':
+      return 'United States';
+    default:
+      return '';
+  }
+}
 
 }

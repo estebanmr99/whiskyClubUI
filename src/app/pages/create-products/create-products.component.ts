@@ -1,9 +1,9 @@
-import { SelectionModel } from '@angular/cdk/collections';
 import { DatePipe } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
+import { CreateProductService } from '../../services/create-product.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -17,16 +17,78 @@ import { MaterialModule } from 'src/app/material/material.module';
 })
 export class CreateProductsComponent implements OnInit {
 
-  categoriesFilter = new FormControl();
+  createForm: FormGroup;
+  allTypes: any[];
+  loading = false;
+  idType: string;
+  imgByteArray: string;
+  productProfile: any = {};
 
-  dataSource = new MatTableDataSource();
+  constructor(private formBuilder: FormBuilder,
+    private createService:CreateProductService,
+    private sanitizer: DomSanitizer) {
 
-  allProductsResult: Array<any> = [];
-  selection = new SelectionModel<any>(true, []);
+    this.getTypes();
+    this.imgByteArray = '';
+  }
 
-  constructor(
-  ) {}
+  ngOnInit() {
 
-  ngOnInit(): void {}
+    this.createForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      aged: ['', Validators.required],
+      presentation:['', Validators.required],
+      globalPrice: ['', Validators.required],
+    });
+  }
+
+  createProduct(){
+    if (this.createForm.invalid) {
+      return;
+    }
+    this.createService.insertProduct(this.createForm,this.idType,this.imgByteArray).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log("Error: ", error);
+      }
+    );
+
+  }
+  getTypes(){
+
+    this.createService.getTypes().subscribe(
+      (data) => {
+        this.allTypes = data;
+      },
+      (error) => {
+        console.log("Error: ", error);
+      }
+    );
+
+  }
+
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+
+    const reader = new FileReader();
+
+    reader.addEventListener("loadend", function () {
+      this.imgByteArray = reader.result;
+      this.imgByteArray = this.imgByteArray.split(',')[1];
+    }.bind(this), false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+    console.log(this.imgByteArray);
+  }
+
+  selectType(type: String){
+    let infoType = this.allTypes.find(x => x.name == type);
+    this.idType = infoType.idType;
+  }
 
   }

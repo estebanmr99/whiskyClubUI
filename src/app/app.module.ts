@@ -21,6 +21,7 @@ import { ProductsService } from './services/products.service';
 import { AttributesService } from './services/attributes.service';
 import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
+import { CreateProductService } from './services/create-product.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
@@ -54,6 +55,7 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     AttributesService,
     EmployeesService,
     OrdersService,
+    CreateProductService,
     AuthorizeGuard,
     JWTTokenService,
     LocalStorageService,

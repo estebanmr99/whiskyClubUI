@@ -24,8 +24,8 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>List of employees</mat-label>
                                         <mat-select (selectionChange)="getEmployee($event.value)" required>
-                                            <mat-option *ngFor="let empl of allEmployeesSotore" [value]="empl.name">
-                                                {{empl.name}}
+                                            <mat-option *ngFor="let empl of allEmployeesSotore" [value]="empl.Ep[0].name">
+                                                {{empl.Ep[0].name}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
