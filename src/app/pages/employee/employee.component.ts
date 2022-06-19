@@ -8,7 +8,7 @@ import { EmployeesService } from '../../services/employees.service';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
-  Allstores: any[];
+  allStores: any[];
   allEmployeesSotore: any[];
   infoEmployee: any[];
   idStore: string;
@@ -26,7 +26,7 @@ export class EmployeeComponent implements OnInit {
   createForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private employeesService: EmployeesService) {
 
-    this.Allstores = [
+    this.allStores = [
       {
         counry: 'United States',
         stores: [
@@ -69,11 +69,6 @@ export class EmployeeComponent implements OnInit {
       localSalary: ['', Validators.required],
       globalSalary: ['', Validators.required]
     });
-  }
-
-
-  onFormSubmit() {
-    console.log(this.editForm.value);
   }
 
   getEmployees(Store: String) {
@@ -157,12 +152,12 @@ export class EmployeeComponent implements OnInit {
     this.editForm.get('globalSalary').setValue(this.infoEmployee[0].globalSalary);
   }
 
-  getEditSotore(Store: String) {
+  getEditStore(Store: String) {
     this.EditidStore = this.selectStore(Store);
     this.updateCountry = this.selectCountry(Store);
   }
 
-  getInsertSotore(Store: String) {
+  getInsertStore(Store: String) {
     this.InsertidStore = this.selectStore(Store);
     this.insertCountry = this.selectCountry(Store);
   }

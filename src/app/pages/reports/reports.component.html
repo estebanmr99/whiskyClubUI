@@ -11,7 +11,7 @@
     <div class="card-body d-flex inline-flex ">
       <mat-form-field appearance="fill" style="width:150px !important; margin: 0px 10px">
         <mat-label>Select product</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -21,7 +21,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" style="width:100px !important; margin: 0px 10px">
         <mat-label>Select</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -33,7 +33,7 @@
     <div class="card-body d-flex inline-flex ">
       <mat-form-field appearance="fill" style="width:150px !important; margin: -40px 10px">
         <mat-label>Select type</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -43,7 +43,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" style="width:150px !important; margin: -40px 10px">
         <mat-label>Select country</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -61,7 +61,7 @@
     <div class="card-body d-flex inline-flex ">
       <mat-form-field appearance="fill" style="width:150px !important; margin: 0px 10px">
         <mat-label>Select departament</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -71,7 +71,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" style="width:150px !important; margin: 0px 10px">
         <mat-label>Select review</mat-label>
-        <mat-select (selectionChange)="getEditSotore($event.value)" required>
+        <mat-select (selectionChange)="getEditStore($event.value)" required>
           <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
             <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
               {{str.StoreName}}
@@ -88,7 +88,7 @@
       <div class="card-body d-flex inline-flex ">
         <mat-form-field appearance="fill" style="width:150px !important; margin: 0px 10px">
           <mat-label>Select subscription</mat-label>
-          <mat-select (selectionChange)="getEditSotore($event.value)" required>
+          <mat-select (selectionChange)="getEditStore($event.value)" required>
             <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
               <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
                 {{str.StoreName}}
@@ -98,7 +98,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill" style="width:100px !important; margin: 0px 10px">
           <mat-label>Select</mat-label>
-          <mat-select (selectionChange)="getEditSotore($event.value)" required>
+          <mat-select (selectionChange)="getEditStore($event.value)" required>
             <mat-optgroup *ngFor="let store of allStores" [label]="store.counry" [disabled]="store.disabled">
               <mat-option *ngFor="let str of store.stores" [value]="str.StoreName">
                 {{str.StoreName}}
