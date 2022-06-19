@@ -6,10 +6,10 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
           </div>
-          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true" (blur)="focus = false">
+          <input class="form-control" [formControl]="searchBox" placeholder="Search" type="text" (focus)="focus = true" (blur)="focus = false">
         </div>
       </div>
-      <button type="button" class="btn btn-success" style="margin-left: 1rem;">Search</button>
+      <button type="button" (click)="findProduct()" class="btn btn-success" style="margin-left: 1rem;">Search</button>
     </form>
   </div>
 </div>
@@ -28,25 +28,23 @@
       <div class="mb-4 mb-xl-0 d-flex flex-row py-3 h-100">
         <div>
           <h3 class="mb-0" style="display: inline-block; margin-right: 0.5rem;">Price</h3>
-          <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1000" min="0" max="100000"
+          <mat-slider thumbLabel [displayWith]="formatLabel" [formControl]="priceRange" tickInterval="10" step="10" min="0" max="5000"
             aria-label="units"></mat-slider>
         </div>
         <div style="margin-left: 1rem;">
           <h3 class="mb-0" style="display: inline-block;">Type</h3>
           <mat-form-field style="max-width: 12rem; margin-left: 1rem;">
-            <mat-select #select (opened)="s1(select)" placeholder="Ascending" (closed)="s2(select)"
-              floatPlaceholder="never">
-              <mat-option value="option1">Popularity</mat-option>
-              <mat-option value="option2">Ascending</mat-option>
-              <mat-option value="option3">Descending</mat-option>
+            <mat-select #select [formControl]="types" (opened)="s1(select)"
+              placeholder="" (closed)="s2(select)" floatPlaceholder="never">
+              <mat-option *ngFor="let type of typesList" [value]="type.name">{{ type.name }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div style="min-width: 8rem; margin-left: 1rem;">
           <h3 class="mb-0" style="display: inline-block; margin-right: 0.5rem;">Distance</h3>
           <div class="input-margin" style="display: -webkit-inline-box; max-width: 5rem;">
-            <input id="typeahead-basic" type="number" class="form-control" placeholder="KM"
-              formControlName="localPrice" />
+            <input id="typeahead-basic" [formControl]="distance" type="number" class="form-control" placeholder="KM" />
           </div>
         </div>
         <div style="margin-left: 1rem;">
@@ -68,11 +66,11 @@
         <div class="col-8">
           <h3 class="mb-0" style="display: inline-block;">Order by</h3>
           <mat-form-field style="max-width: 6rem; margin-left: 1rem;">
-            <mat-select #select (opened)="s1(select)" placeholder="Ascending" (closed)="s2(select)"
+            <mat-select #select [formControl]="order" (selectionChange)="onOrderChange()" (opened)="s1(select)" placeholder="Order" (closed)="s2(select)"
               floatPlaceholder="never">
-              <mat-option value="option1">Popularity</mat-option>
-              <mat-option value="option2">Ascending</mat-option>
-              <mat-option value="option3">Descending</mat-option>
+              <mat-option value="Popularity">Popularity</mat-option>
+              <mat-option value="Ascending">Ascending</mat-option>
+              <mat-option value="Descending">Descending</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -80,21 +78,28 @@
     </div>
     <div class="card-body">
       <form>
-        <div *ngFor="let test of test;">
+        <div *ngFor="let product of allProducts;">
           <div class="card card-body">
             <div class="d-flex flex-row" style="align-items: center;">
-              <img width="100" height="100" src="./../../../assets/img/theme/sub1.jpeg" alt="Card image cap">
+              <!-- <img width="100" height="100" src="./../../../assets/img/theme/sub1.jpeg" alt="Card image cap"> -->
+              <img width="100" height="100" id="preview" [src]="product.image" alt="Card image cap">
               <div class="d-flex flex-column" style="margin-left: 1.5rem; margin-right: 1.5rem;">
-                <h5 class="card-title" style="font-size: medium;"><b>{{test.name}}</b></h5>
-                <p class="card-text">{{test.name}}
+                <h5 class="card-title" style="font-size: medium;"><b>{{product.productName}}</b></h5>
+                <p class="card-text">Aged: {{product.features.aged}} --- Presentation: {{product.features.presentation}} --- Supplier: {{product.features.supplier}}
                 </p>
                 <div class="d-flex flex-row">
-                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>Price:</b></h5>
-                  ${{test.localPrice}}
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>Local price ({{product.currency}}): </b></h5>
+                  ${{product.localPrice}}
+                  <h5 class="card-title" style="font-size: small; margin-left: 1rem; margin-right: 0.4rem;"><b>Global price (Dolar): </b></h5>
+                  ${{product.globalPrice}}
                 </div>
                 <div class="d-flex flex-row">
-                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>Nearest store:</b></h5>
-                  {{test.nearestStore}} <i class="ni ni-pin-3" style="margin-left: 0.1rem;"></i>
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem;"><b>At store:</b></h5>
+                  {{product.storeLocation}} <i class="ni ni-pin-3" style="margin-left: 0.1rem;"></i>
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem; margin-left: 1rem;"><b>Store distance to user: </b></h5>
+                  {{product.distanceUser}} KM
+                  <h5 class="card-title" style="font-size: small; margin-right: 0.4rem; margin-left: 1rem;"><b>Available:</b></h5>
+                  {{product.productQuantity}}
                 </div>
               </div>
               <div class="d-flex flex-row" style="align-items: center; margin-left: auto;">

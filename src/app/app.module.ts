@@ -21,6 +21,8 @@ import { ProductsService } from './services/products.service';
 import { AttributesService } from './services/attributes.service';
 import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
+import { InventoryService } from './services/inventory.service';
+import { WiskyProductService } from './services/wisky-product.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
 import { AdminGuard } from './services/admin-guard.service';
@@ -28,7 +30,6 @@ import { UserGuard } from './services/user-guard.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
-
 
 @NgModule({
   imports: [
@@ -61,6 +62,8 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     UserGuard,
     JWTTokenService,
     LocalStorageService,
+    InventoryService,
+    WiskyProductService,
     { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
