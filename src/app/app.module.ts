@@ -17,8 +17,6 @@ import { ExpansionComponent } from './dashboard/expansion/expansion.component';
 import { MaterialModule } from './material/material.module';
 
 import { UserService } from './services/user.service';
-import { ProductsService } from './services/products.service';
-import { AttributesService } from './services/attributes.service';
 import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
 import { CreateProductService } from './services/create-product.service';
@@ -54,8 +52,6 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
   providers: [
     NgbActiveModal,
     UserService,
-    ProductsService,
-    AttributesService,
     EmployeesService,
     OrdersService,
     CreateProductService,

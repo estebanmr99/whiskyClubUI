@@ -10,7 +10,7 @@ import { ExternalUserLayoutComponent } from './layouts/external-user-layout/exte
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'wisky-products',
+    redirectTo: 'country',
     pathMatch: 'full',
   }, {
     path: '',

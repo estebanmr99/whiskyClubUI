@@ -6,8 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { ProductProfileComponent } from '../../pages/product-profile/product-profile.component';
-import { ProductComponent } from '../../pages/products/product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../../material/material.module';
 import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
@@ -31,8 +29,6 @@ import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-product
     ReactiveFormsModule
   ],
   declarations: [
-    ProductComponent,
-    ProductProfileComponent,
     SubscriptionComponent,
     EmployeeComponent,
     CreateProductsComponent,
