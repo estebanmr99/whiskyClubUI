@@ -11,6 +11,7 @@ import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-ord
 import { WiskyProductsComponent } from 'src/app/pages/wisky-products/wisky-products.component';
 import { AdminGuard } from 'src/app/services/admin-guard.service';
 
+// Routes available to the admin.
 export const AdminLayoutRoutes: Routes = [
     { path: 'create-products',           component: CreateProductsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
     { path: 'subscription',           component: SubscriptionComponent, canActivate: [AuthorizeGuard, AdminGuard] },

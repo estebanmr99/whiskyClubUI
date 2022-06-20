@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { JWTTokenService } from '../../services/jwttoken.service';
 
+// This component is used to display the navbar.
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -27,6 +28,7 @@ export class NavbarComponent implements OnInit {
     this.location = location;
   }
 
+  // This function is used to get the list of titles for the sidebar.
   ngOnInit() {
     if (this.isUserLoggedIn()) {
       this.listTitles = ROUTESUSER.filter(listTitle => listTitle);
@@ -36,14 +38,18 @@ export class NavbarComponent implements OnInit {
     this.username = this.jwtService.getUserEmail().toUpperCase();
   }
 
+  // This function is used to check if the logged in user is external or not.
   isUserLoggedIn() {
     return this.jwtService.getUserType() === 1;
   }
 
+  // This function is used to check if the logged in user is admin or not.
   isAdminLoggedIn() {
     return this.jwtService.getUserType() === 0;
   }
 
+  // This function is used to get the page title.
+  // Returns the page title.
   getTitle(){
     var title = "";
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -59,6 +65,7 @@ export class NavbarComponent implements OnInit {
     return title;
   }
 
+  // This function is used to logout the user.
   logout() {
     this.userService.logout();
     this.router.navigate(['/country']);

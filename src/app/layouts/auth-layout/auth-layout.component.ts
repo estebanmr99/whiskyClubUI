@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
+// This component is used to show the authentication layout.
 @Component({
   selector: 'app-auth-layout',
   templateUrl: './auth-layout.component.html',
@@ -12,6 +13,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router) { }
 
+  // This function is used to get the page title.
   ngOnInit() {
     var html = document.getElementsByTagName("html")[0];
     html.classList.add("auth-layout");
@@ -20,8 +22,9 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
-
   }
+
+  // This function is used to delete everything from the auth-layout.
   ngOnDestroy() {
     var html = document.getElementsByTagName("html")[0];
     html.classList.remove("auth-layout");

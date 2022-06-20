@@ -6,6 +6,7 @@ import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-ord
 import { WiskyProductsComponent } from 'src/app/pages/wisky-products/wisky-products.component';
 import { UserGuard } from 'src/app/services/user-guard.service';
 
+// Routes available to the user external.
 export const ExternalUserLayoutRoutes: Routes = [
     { path: 'subscription',           component: SubscriptionComponent, canActivate: [AuthorizeGuard, UserGuard] },
     { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard, UserGuard] },

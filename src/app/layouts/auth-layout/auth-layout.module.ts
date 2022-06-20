@@ -9,6 +9,7 @@ import { RegisterComponent } from '../../pages/register/register.component';
 import { MaterialModule } from '../../material/material.module';
 import { LoginComponent } from '../../pages/login/login.component';
 
+// Components used in the auth layout.
 @NgModule({
   imports: [
     CommonModule,

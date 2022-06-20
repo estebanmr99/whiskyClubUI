@@ -17,6 +17,7 @@ import { ReportsComponent } from '../../pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
 import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-products.component';
 
+// Components used in the admin layout.
 @NgModule({
   imports: [
     CommonModule,

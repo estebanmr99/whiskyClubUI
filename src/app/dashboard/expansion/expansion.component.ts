@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// This component is used to display the dashboard.
 @Component({
   selector: 'app-expansion',
   templateUrl: './expansion.component.html',
