@@ -27,7 +27,9 @@ export class CountryComponent implements OnInit {
     }
 
   onChoice() {
+
     this.submitted = true;
+    //storage the country for future procedures
     switch (this.selectedCountry) {
       case 'United States':
         this.localStorage.set('country', this.selectedCountry);

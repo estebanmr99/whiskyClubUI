@@ -7,10 +7,6 @@
   </div>
 </div>
 
-<!--Filtrado-->
-
-<!-- Page content -->
-
 <div class="container">
   <div class="header-body text-center mb-7">
     <div class="row justify-content-center">
@@ -29,7 +25,6 @@
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
-
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
             <small><b>Fill the information of your product</b> </small>
@@ -40,7 +35,6 @@
                 <div class="form-group" style="align-self: center;">
                   <input class="form-control" formControlName="name" placeholder="Name" type="text"
                     style="margin: 6px;">
-
                   <mat-form-field appearance="fill" style="display: contents; background-color: white;">
                     <mat-label>Type</mat-label>
                     <mat-select (selectionChange)="selectType($event.value)" required>
@@ -55,17 +49,16 @@
                   <input class="form-control" formControlName="presentation" placeholder="Presentation" type="text">
                   <br>
                   <input class="form-control" formControlName="globalPrice" placeholder="Global price (US$)"
-                    type="text">
+                    type="number">
                   <br>
                   <blockquote class="blockquote">
                     <p class="mb-0">Insert an image.</p>
                   </blockquote>
                   <div style="display: flex;">
-                    <input id="default-btn" class="btn" type="file" style="width: 100%;" placeholder="image"
-                      (change)="uploadFile($event)"> >
+                    <input id="default-btn" class="btn" type="file" style="width: 150%;" placeholder="image"
+                      (change)="uploadFile($event)"> 
                   </div>
                 </div>
-
               </div>
             </div>
             <div class="text-center">
@@ -75,14 +68,8 @@
               </button>
             </div>
           </form>
-          <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin: 28px 100px">
-            <span class="btn-inner--text">Create</span>
-            <i class="fas fa-check"></i>
-          </button>
-
         </div>
       </div>
-
     </div>
   </div>
 </div>

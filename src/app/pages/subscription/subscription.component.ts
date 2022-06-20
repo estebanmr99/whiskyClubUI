@@ -23,12 +23,18 @@ export class SubscriptionComponent implements OnInit {
     private localStorage: LocalStorageService,
     private userService: UserService) { }
 
+  //function that receives the chosen subscription and 
+  //assigns it to the user store in the login-token 
+  //according to the country chosen when enter to web
   selectSubscription(id: string) {
-    var idUser = this.tokenService.getId();
-    var country = this.localStorage.get('country');
 
+    var idUser = this.tokenService.getId();
+    //country store in the localStorage
+    var country = this.localStorage.get('country');
+    //call api service
     this.userService.addSubscription(idUser, id, country).subscribe(
       (data) => {
+        console.log("Update");
       },
       (error) => {
         console.log("ErroR: ", error);

@@ -12,6 +12,7 @@ export class ViewOrderDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
+  //get idOrder send by url
   ngOnInit(): void {
     this.idOrder = this.activatedRoute.snapshot.params.idOrder;
   }

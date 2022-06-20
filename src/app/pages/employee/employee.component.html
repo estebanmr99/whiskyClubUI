@@ -24,7 +24,7 @@
                     <mat-label>List of employees</mat-label>
                     <mat-select (selectionChange)="getEmployee($event.value)" required>
                       <mat-option *ngFor="let empl of allEmployeesSotore" [value]="empl.Ep[0].name">
-                        {{empl.Ep[0].name}}
+                        {{empl.Ep[0].name + " "+ empl.Ep[0].lastName}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -55,18 +55,18 @@
                     </div>
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
-                        <input type="text" formControlName="birthDate" class="form-control" placeholder="Birth">
+                        <input type="date" formControlName="birthDate" class="form-control" placeholder="Birth">
                       </div>
                     </div>
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
-                        <input type="text" formControlName="localSalary" class="form-control"
+                        <input type="number" formControlName="localSalary" class="form-control"
                           placeholder="Local salary">
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="input-group input-group-alternative">
-                        <input type="text" formControlName="globalSalary" class="form-control"
+                        <input type="number" formControlName="globalSalary" class="form-control"
                           placeholder="Global salary">
                       </div>
                     </div>
@@ -115,17 +115,17 @@
                   </div>
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <input type="text" formControlName="birthDate" class="form-control" placeholder="Birth">
+                      <input type="date" formControlName="birthDate" class="form-control" placeholder="Birth">
                     </div>
                   </div>
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <input type="text" formControlName="localSalary" class="form-control" placeholder="Local salary">
+                      <input type="number" formControlName="localSalary" class="form-control" placeholder="Local salary">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-alternative">
-                      <input type="text" formControlName="globalSalary" class="form-control"
+                      <input type="number" formControlName="globalSalary" class="form-control"
                         placeholder="Global salary">
                     </div>
                   </div>
