@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
+// This component is used to show the country page.
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -17,6 +18,7 @@ export class CountryComponent implements OnInit {
       private localStorage: LocalStorageService,
       private router: Router,
     ) {
+      // Available countries to select.
       this.countryOptions = [
         'United States',
         'Scotland',
@@ -26,8 +28,8 @@ export class CountryComponent implements OnInit {
       this.submitted = false;
     }
 
+  // This function is used to get the selected country.
   onChoice() {
-
     this.submitted = true;
     //storage the country for future procedures
     switch (this.selectedCountry) {

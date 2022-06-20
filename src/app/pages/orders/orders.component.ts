@@ -3,6 +3,7 @@ import { JWTTokenService } from '../../services/jwttoken.service';
 import { OrdersService } from '../../services/orders.service';
 import { Router } from '@angular/router';
 
+// This component is used to show the orders page.
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -38,10 +39,10 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  //this function gets the orders by user id, 
+  //this function gets the orders by user id,
   //this id is obtained from the token that is store when the user login
   getOrders() {
-    
+
     var idUser = this.tokenService.getId();
     //call api service
     this.orderService.getOrdersById(idUser).subscribe(
@@ -55,10 +56,12 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //this function is ckeck if the user is logged in
   isUserLoggedIn() {
     return this.tokenService.getUserType() === 1;
   }
 
+  //this function is ckeck if the user is admin
   isAdminLoggedIn() {
     return this.tokenService.getUserType() === 0;
   }

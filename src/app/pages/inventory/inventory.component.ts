@@ -9,6 +9,7 @@ import { DatePipe } from "@angular/common";
 import { SelectionModel } from "@angular/cdk/collections";
 import { first } from 'rxjs/operators';
 
+// This component is used to show the inventory page.
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
@@ -55,6 +56,7 @@ export class InventoryComponent implements OnInit {
     this.getAllStoresInventory();
   }
 
+  // This function is used init the form validation.
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       idProduct: [''],
@@ -67,6 +69,7 @@ export class InventoryComponent implements OnInit {
     });
   }
 
+  // This function is used get the stores info.
   getStoresInfo() {
     this.inventoryService.getStoresInfo().subscribe(
       (data) => {
@@ -79,6 +82,7 @@ export class InventoryComponent implements OnInit {
     );
   }
 
+  // This function is used to get the product info.
   getProductsInfo() {
     this.inventoryService.getProductsInfo().subscribe(
       (data) => {
@@ -91,6 +95,7 @@ export class InventoryComponent implements OnInit {
     );
   }
 
+  // This function is used to get stores inventory.
   getAllStoresInventory() {
     this.inventoryService.getAllStoresInventory().subscribe(
       (data) => {
@@ -103,20 +108,26 @@ export class InventoryComponent implements OnInit {
     );
   }
 
+  // This function is used to select a new row and update the table.
   onStoreChange() {
     let idStore: number;
     if (this.stores.value != null) {
+      // get the id of the store
       const foundIndex = this.storesInfoList.findIndex((x) => x.name === this.stores.value);
       idStore = this.storesInfoList[foundIndex].idStore;
+      // refresh the table
       this.refreshTableStoreInventory(idStore);
     }
   }
 
+  // This function is used to refresh the product table.
   refreshTableStoreInventory(idStore: number) {
     this.tableStoreInventoryList = [];
+    // get the inventory of the selected store
     this.productsInfoList.forEach((product) => {
       const productInventory = this.allStoresInventoryList.find((productInventory) =>
         productInventory.idProduct === product.idProduct && productInventory.idStore === idStore);
+      // if the product is in the store, add it to the table
       this.tableStoreInventoryList.push(
         {
           idProduct: product.idProduct,
@@ -128,29 +139,33 @@ export class InventoryComponent implements OnInit {
     this.refreshRows();
   }
 
-
+  // This function is used init the paginator of the table.
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // This function is used to refresh the table.
   refreshTable() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // This function is used to refresh the rows of the table.
   refreshRows() {
     this.dataSource = new MatTableDataSource(this.tableStoreInventoryList);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // This function is used when a user clicks on the checkbox inside the table.
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
+  // This function is used to check if all the checkboxes are selected.
   checkboxLabel(row?: any): string {
     if (!row) {
       return `${this.isAllSelected() ? "select" : "deselect"} all`;
@@ -159,14 +174,18 @@ export class InventoryComponent implements OnInit {
       }`;
   }
 
+  // This function is used to select only one checkbox and fill the inventory form.
   selectSingleRow(eventRow?: any) {
+    // Uncheck all rows exept the selected one.
     this.dataSource.data.forEach((row) => {
       if (eventRow && eventRow === row) return;
       this.selection.deselect(row);
     });
+    // get product information
     const productInventory = this.allStoresInventoryList.find((productInventory) =>
       productInventory.idProduct === eventRow.idProduct && productInventory.idStore === eventRow.idStore);
 
+    // Fill the form with the selected row.
     this.productForm.setValue({
       idProduct: null,
       inventory: null,
@@ -185,6 +204,7 @@ export class InventoryComponent implements OnInit {
     }
   }
 
+  // This function is used to update the inventory of the selected product.
   updateInventory() {
     // stop here if form is invalid
     if (this.productForm.invalid) {
@@ -194,10 +214,12 @@ export class InventoryComponent implements OnInit {
 
     this.loading = true;
 
+    // get the selected row
     const foundIndex = this.storesInfoList.findIndex((x) => x.name === this.stores.value);
     const idStore = this.storesInfoList[foundIndex].idStore;
     const country = this.storesInfoList[foundIndex].country;
 
+    // update the inventory of the selected product
     this.inventoryService.updateStoreInventory(idStore, country, this.productForm)
       .pipe(first())
       .subscribe(

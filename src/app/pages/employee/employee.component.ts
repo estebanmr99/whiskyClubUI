@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeesService } from '../../services/employees.service';
 
+// This component is used to create a maintain employee.
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -25,7 +26,7 @@ export class EmployeeComponent implements OnInit {
   editForm: FormGroup;
   createForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private employeesService: EmployeesService) {
-    //Whiskey Club website stores
+    // Whisky Club website stores
     this.allStores = [
       {
         counry: 'United States',
@@ -54,7 +55,7 @@ export class EmployeeComponent implements OnInit {
     ];
   }
 
-  //to initialize forms for employee attributes
+  // this function is used to to initialize forms for employee attributes
   ngOnInit() {
     this.editForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -72,7 +73,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  //get the employees of the selected store
+  // this function is used to get the employees of the selected store
   getEmployees(Store: String) {
 
     this.idStore = this.selectStore(Store);
@@ -93,7 +94,7 @@ export class EmployeeComponent implements OnInit {
 
   }
 
-  //get the information of a selected employee
+  // this function is used to get the information of a selected employee
   getEmployee(employee: String) {
     //get idEmployee from employee array
     let infoEmployee = this.allEmployeesSotore.find(x => x.Ep[0].name == employee);
@@ -113,7 +114,7 @@ export class EmployeeComponent implements OnInit {
 
   }
 
-  //update the information of a selected employee
+  //this function is used to update the information of a selected employee
   //only if the information is complete
   updateStoreEmployee() {
     if (this.editForm.invalid) return;
@@ -130,7 +131,7 @@ export class EmployeeComponent implements OnInit {
   }
 
 
-  //insert new employee
+  //this function is used to insert new employee
   //only if the information is complete
   insertStoreEmployee() {
     if (this.createForm.invalid) return;
@@ -146,7 +147,7 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  //delete a selected  employee
+  //this function is used to delete a selected  employee
   deleteStoreEmployee() {
     if (this.editForm.invalid) return;
 
@@ -161,7 +162,7 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  //set Form with the information of selected employee
+  //this function is used to set Form with the information of selected employee
   setEditForm() {
 
     this.editForm.get('name').setValue(this.infoEmployee[0].Ep[0].name);
@@ -171,19 +172,19 @@ export class EmployeeComponent implements OnInit {
     this.editForm.get('globalSalary').setValue(this.infoEmployee[0].globalSalary);
   }
 
-  //store the selected store for employee update
+  //this function is used to store the selected store for employee update
   getEditStore(Store: String) {
     this.EditidStore = this.selectStore(Store);
     this.updateCountry = this.selectCountry(Store);
   }
 
-  //store the selected store for employee insert
+  //this function is used to store the selected store for employee insert
   getInsertStore(Store: String) {
     this.InsertidStore = this.selectStore(Store);
     this.insertCountry = this.selectCountry(Store);
   }
 
-  //function to get id Store
+  //this function is used to get id Store
   selectStore(store: String) {
     switch (store) {
       case 'Cork':
@@ -209,6 +210,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
+  // this function is used to get country from store
   selectCountry(store: String) {
     switch (store) {
       case 'Cork':

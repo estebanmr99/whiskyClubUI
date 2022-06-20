@@ -7,6 +7,7 @@ import { JWTTokenService } from '../../services/jwttoken.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { UserService } from '../../services/user.service';
 
+// This component is used to show the suscription page.
 @NgModule({
   imports: [MaterialModule],
 })
@@ -23,8 +24,8 @@ export class SubscriptionComponent implements OnInit {
     private localStorage: LocalStorageService,
     private userService: UserService) { }
 
-  //function that receives the chosen subscription and 
-  //assigns it to the user store in the login-token 
+  //function that receives the chosen subscription and
+  //assigns it to the user store in the login-token
   //according to the country chosen when enter to web
   selectSubscription(id: string) {
 

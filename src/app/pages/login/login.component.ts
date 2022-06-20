@@ -2,12 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { UserService } from '../../services/user.service';
-
 import { LocalStorageService } from '../../services/local-storage.service'
 import { JWTTokenService } from 'src/app/services/jwttoken.service';
 
+// This component is used to login to the application.
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
       this.router.navigate(['/wisky-products']);
     }
+    // Get return url from route parameters or default to '/'
     var country = this.localStorageService.get('country');
     if (country === null) {
       this.router.navigate(['/country']);
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userService.userValue = false;
   }
 
+  // This function is used to init the form validation.
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -51,10 +52,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  // This function is used to redirect to the register page.
   gotoRegister() {
     this.router.navigate(["/register"]);
   }
 
+  // This function is used to login to the application.
   onSubmit() {
     this.submitted = true;
 
@@ -65,6 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
+    // login user service
     this.userService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
@@ -75,6 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.error = "";
         },
         error => {
+          // if error is 401, then user is not logged in
           this.error = "The email and password you entered don't match.";
           console.log(error);
           this.loading = false;
@@ -83,6 +88,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           if (this.tokenService.getToken() == null){
             this.tokenService.setToken(this.localStorageService.get('token'));
           }
+          // redirect based on user type
           if (this.isUserLoggedIn()) {
             this.router.navigate(['user' + this.returnUrl]);
           } else if (this.isAdminLoggedIn()) {
@@ -95,10 +101,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+  // This function is used to check if the user is logged in.
   isUserLoggedIn() {
     return this.tokenService.getUserType() === 1;
   }
 
+  // This function is used to check if the admin is logged in.
   isAdminLoggedIn() {
     return this.tokenService.getUserType() === 0;
   }

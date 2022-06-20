@@ -6,7 +6,7 @@ import { UserService } from '../../services/user.service';
 import { LocalStorageService } from '../../services/local-storage.service'
 declare const google: any;
 
-// clean
+// This is the component to register a new user.
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -42,7 +42,9 @@ export class RegisterComponent implements OnInit {
     this.error = '';
   }
 
+  // Init the register form and the google maps.
   ngOnInit(): void {
+    // Vlidate the email through the email validator regex.
     const emailRegex = '^^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$';
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
@@ -57,17 +59,20 @@ export class RegisterComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = '/login';
 
+    // Init the google maps
     var marker;
     var map = document.getElementById('map-canvas');
     let lat = map.getAttribute('data-lat');
     let lng = map.getAttribute('data-lng');
     let stores;
 
+    // Get the center of the map.
     ({lat, lng, stores} = this.centerMap(lat, lng));
 
     var myLatlng = new google.maps.LatLng(lat, lng);
     var mapOptions = this.getMaOptions(myLatlng);
 
+    // Create map
     map = new google.maps.Map(map, mapOptions);
 
     stores.forEach(store => {
@@ -78,6 +83,7 @@ export class RegisterComponent implements OnInit {
       });
     });
 
+    // Create marker if user clicks on the map based on lat and lng.
     google.maps.event.addListener(map, 'click', function (event: { latLng: any; }) {
       this.userDeliveryPosition.lat = event.latLng.lat();
       this.userDeliveryPosition.lng = event.latLng.lng();
@@ -95,6 +101,7 @@ export class RegisterComponent implements OnInit {
     }.bind(this), false);
   }
 
+  // This is the function to center the map.
   centerMap(lat: string, lng: string) {
     let stores
     if (this.country === 'United States') {
@@ -124,6 +131,7 @@ export class RegisterComponent implements OnInit {
     return { lat: lat, lng: lng, stores: stores };
   }
 
+  // This is the function to get the map options, like the zoom and preferred map type.
   getMaOptions(myLatlng: any) {
     return {
       zoom: this.country !== 'United States' ? 6 : 3,
@@ -142,18 +150,22 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  // This is the function to validate the password.
   passwordValidator(control: FormControl) {
     let password = control.value;
 
+    // Check if the password complies with the minimum requirements.
     let passwordHasCapitalLetter = password.match(/[A-Z]/);
     let passwordHasNumber = password.match(/[0-9]/);
     let passwordHasSpecialCharacter =  password !== '' && !password.match(/^[\w&.-]+$/);
     let passwordHasLength = password.length >= 5;
 
+    // If the user does not have errors, return null.
     if (passwordHasCapitalLetter && passwordHasNumber && passwordHasSpecialCharacter && passwordHasLength) {
       return null;
     }
 
+    // If the password does not comply with the requirements, return an error.
     return {
       passwordMissingCapital: !passwordHasCapitalLetter,
       passwordMissingLength: !passwordHasLength,
@@ -166,11 +178,13 @@ export class RegisterComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
+  // This is the function to check if the user location is valid.
   get isUserLocationInvalid() {
     if (this.userDeliveryPosition.lat === 0 && this.userDeliveryPosition.lng === 0) return true;
     return false;
   }
 
+  // This is the function to create the user.
   onSubmit() {
     this.submitted = true;
 
@@ -181,6 +195,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
+    // Create the user.
     this.userService.register(this.registerForm, this.userDeliveryPosition)
       .pipe(first())
       .subscribe(

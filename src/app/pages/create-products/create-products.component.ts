@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { CreateProductService } from '../../services/create-product.service';
 
+// This component is used to create a new product.
 @NgModule({
   imports: [MaterialModule],
 })
@@ -30,7 +31,7 @@ export class CreateProductsComponent implements OnInit {
     this.imgByteArray = '';
   }
 
-  //to initialize form for product attributes
+  // this function is used to initialize form for product attributes
   ngOnInit() {
 
     this.createForm = this.formBuilder.group({
@@ -41,7 +42,7 @@ export class CreateProductsComponent implements OnInit {
     });
   }
 
-  //create new product, only if the from is valid
+  // this function is used tocreate new product, only if the from is valid
   createProduct() {
     if (this.createForm.invalid) {
       return;
@@ -58,7 +59,7 @@ export class CreateProductsComponent implements OnInit {
 
   }
 
-  //get types to clasificate the whisky product
+  // this function is used to get types to clasificate the whisky product
   getTypes() {
     this.createService.getTypes().subscribe(
       (data) => {
@@ -71,7 +72,7 @@ export class CreateProductsComponent implements OnInit {
 
   }
 
-  //this function gets the uploaded image to convert it and send it to the api
+  // this function gets the uploaded image to convert it and send it to the api
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
     const reader = new FileReader();
@@ -87,7 +88,7 @@ export class CreateProductsComponent implements OnInit {
     }
   }
 
-  //store the selected type to create the product
+  // this function is used to store the selected type to create the product
   selectType(type: String) {
     let infoType = this.allTypes.find(x => x.name == type);
     this.idType = infoType.idType;
