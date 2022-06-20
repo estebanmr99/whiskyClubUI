@@ -15,7 +15,7 @@ import { InventoryComponent } from '../../pages/inventory/inventory.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
 import { ReportsComponent } from '../../pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
-import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-products.component';
+import { WhiskyProductsComponent } from '../../pages/whisky-products/whisky-products.component';
 
 // Components used in the admin layout.
 @NgModule({
@@ -37,7 +37,7 @@ import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-product
     OrdersComponent,
     ReportsComponent,
     ViewOrderDetailComponent,
-    WiskyProductsComponent
+    WhiskyProductsComponent
   ]
 })
 

@@ -5,15 +5,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
 import { JWTTokenService } from 'src/app/services/jwttoken.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { WiskyProductService } from 'src/app/services/wisky-product.service';
+import { WhiskyProductService } from 'src/app/services/whisky-product.service';
 
 // This component is used to show the products page.
 @Component({
-  selector: 'app-wisky-products',
-  templateUrl: './wisky-products.component.html',
-  styleUrls: ['./wisky-products.component.css']
+  selector: 'app-whisky-products',
+  templateUrl: './whisky-products.component.html',
+  styleUrls: ['./whisky-products.component.css']
 })
-export class WiskyProductsComponent implements OnInit {
+export class WhiskyProductsComponent implements OnInit {
   categoriesList: Array<any> = [];
   categoriesFilter = new FormControl();
   categoriesFilterList: Array<any> = [];
@@ -29,7 +29,7 @@ export class WiskyProductsComponent implements OnInit {
   allProducts: any[] = [];
 
   constructor(private tokenService: JWTTokenService,
-    private wiskyProductService: WiskyProductService,
+    private wiskyProductService: WhiskyProductService,
     private localStorage: LocalStorageService,
     private sanitizer: DomSanitizer,
   ) {

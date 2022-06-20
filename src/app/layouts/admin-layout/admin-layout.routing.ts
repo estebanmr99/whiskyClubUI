@@ -8,7 +8,7 @@ import { InventoryComponent } from 'src/app/pages/inventory/inventory.component'
 import { OrdersComponent } from 'src/app/pages/orders/orders.component';
 import { ReportsComponent } from 'src/app/pages/reports/reports.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
-import { WiskyProductsComponent } from 'src/app/pages/wisky-products/wisky-products.component';
+import { WhiskyProductsComponent } from 'src/app/pages/whisky-products/whisky-products.component';
 import { AdminGuard } from 'src/app/services/admin-guard.service';
 
 // Routes available to the admin.
@@ -20,5 +20,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'orders',           component: OrdersComponent, canActivate: [AuthorizeGuard, AdminGuard] },
     { path: 'reports',           component: ReportsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
     { path: 'order-detail/:idOrder',           component: ViewOrderDetailComponent, canActivate: [AuthorizeGuard, AdminGuard] },
-    { path: 'wisky-products',           component: WiskyProductsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
+    { path: 'whisky-products',           component: WhiskyProductsComponent, canActivate: [AuthorizeGuard, AdminGuard] },
 ];

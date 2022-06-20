@@ -43,7 +43,7 @@ const routes: Routes =[
     ]
   }, { // Route for the country page.
     path: '**',
-    redirectTo: 'wisky-products'
+    redirectTo: 'whisky-products'
   }
 ];
 

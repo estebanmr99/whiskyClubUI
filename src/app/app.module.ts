@@ -21,7 +21,7 @@ import { EmployeesService } from './services/employees.service';
 import { OrdersService } from './services/orders.service';
 import { CreateProductService } from './services/create-product.service';
 import { InventoryService } from './services/inventory.service';
-import { WiskyProductService } from './services/wisky-product.service';
+import { WhiskyProductService } from './services/whisky-product.service';
 
 import { AuthorizeGuard } from './services/authorize-guard.service';
 import { AdminGuard } from './services/admin-guard.service';
@@ -62,7 +62,7 @@ import { UniversalAppInterceptor } from './services/universal-app-interceptor.se
     JWTTokenService,
     LocalStorageService,
     InventoryService,
-    WiskyProductService,
+    WhiskyProductService,
     { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

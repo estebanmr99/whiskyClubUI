@@ -9,7 +9,7 @@ import { MaterialModule } from '../../material/material.module';
 import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
 import { ViewOrderDetailComponent } from '../../pages/view-order-detail/view-order-detail.component';
-import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-products.component';
+import { WhiskyProductsComponent } from '../../pages/whisky-products/whisky-products.component';
 
 // Components used in the user external layout.
 @NgModule({
@@ -27,7 +27,7 @@ import { WiskyProductsComponent } from '../../pages/wisky-products/wisky-product
     SubscriptionComponent,
     OrdersComponent,
     ViewOrderDetailComponent,
-    WiskyProductsComponent
+    WhiskyProductsComponent
   ]
 })
 

@@ -18,14 +18,14 @@ export const ROUTESADMIN: RouteInfo[] = [
     { path: '/admin/employee', title: 'Employees',  icon: 'ni-settings text-blue', class: '' },
     { path: '/admin/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
     { path: '/admin/reports', title: 'Reports',  icon: 'ni-settings text-blue', class: '' },
-    { path: '/admin/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
+    { path: '/admin/whisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 // Items to display if the user is external.
 export const ROUTESUSER: RouteInfo[] = [
   { path: '/user/subscription', title: 'Select subscription',  icon: 'ni-fat-add text-purple', class: '' },
   { path: '/user/orders', title: 'Orders',  icon: 'ni-archive-2 text-red', class: '' },
-  { path: '/user/wisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
+  { path: '/user/whisky-products', title: 'Products',  icon: 'ni-archive-2 text-blue', class: '' },
 ];
 
 // This component is used to display the sidebar.

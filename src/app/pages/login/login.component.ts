@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     // redirect to home if already logged in
     if (this.userService.userValue && !this.userService.isTokenExpired()) {
-      this.router.navigate(['/wisky-products']);
+      this.router.navigate(['/whisky-products']);
     }
     // Get return url from route parameters or default to '/'
     var country = this.localStorageService.get('country');
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/wisky-products';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/whisky-products';
   }
 
   // convenience getter for easy access to form fields

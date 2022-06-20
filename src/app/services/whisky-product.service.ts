@@ -8,7 +8,7 @@ import {
 @Injectable({
   providedIn: 'root'
 })
-export class WiskyProductService {
+export class WhiskyProductService {
   userValue: Boolean = false;
 
   constructor(private http: HttpClient) { }
