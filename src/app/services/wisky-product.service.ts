@@ -4,6 +4,7 @@ import {
   HttpClient
 } from '@angular/common/http';
 
+// This is the service that is used to get all products to display in the products page.
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +13,12 @@ export class WiskyProductService {
 
   constructor(private http: HttpClient) { }
 
+  // This is the method that is used to get the product types.
   getProductTypes(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/product/getProductTypes');
   }
 
+  // This is the method that is used to get the products.
   getAllProducts(searchQuery: string, idUser: number, idType: number, distance: number, price: number, order: string, country: string): Observable<any> {
     const body = {
       searchQuery: searchQuery,

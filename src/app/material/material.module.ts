@@ -44,6 +44,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+// This is the module that is used to import all of the material components.
 const MaterialsComponents = [
   A11yModule,
   ClipboardModule,
@@ -95,9 +96,11 @@ const MaterialsComponents = [
 @NgModule({
   imports: [
     MaterialsComponents
-  ], 
+  ],
   exports: [
     MaterialsComponents
   ]
 })
-export class MaterialModule { }
+
+// Export the module so that it can be used in other components.
+export class MaterialModule { };

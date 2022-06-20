@@ -30,6 +30,7 @@ import { JWTTokenService } from './services/jwttoken.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UniversalAppInterceptor } from './services/universal-app-interceptor.service';
 
+// Where all the components and services are imported.
 @NgModule({
   imports: [
     BrowserAnimationsModule,

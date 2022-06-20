@@ -5,11 +5,12 @@ import { JWTTokenService } from './jwttoken.service';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router'
 
+// This is the guard service. It is used to check if the user is logged in or not.
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizeGuard implements CanActivate {
-  constructor( //private loginService: LoginService,
+  constructor(
               private authStorageService: LocalStorageService,
               private jwtService: JWTTokenService,
               private router: Router) {
@@ -21,10 +22,10 @@ export class AuthorizeGuard implements CanActivate {
         this.jwtService.setToken(this.authStorageService.get('token'));
       }
       if (this.jwtService.getUserEmail()) {
-          if (this.jwtService.isTokenExpired()) {
+          if (this.jwtService.isTokenExpired()) { // If the token is expired, then redirect to login page.
             this.router.navigate(['/country']);
             // Should Redirect Sig-In Page
-          } else {
+          } else { // If the token is not expired, then redirect to the home page.
             return true;
           }
       }

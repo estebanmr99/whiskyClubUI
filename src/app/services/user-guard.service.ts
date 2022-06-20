@@ -5,11 +5,12 @@ import { JWTTokenService } from './jwttoken.service';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router'
 
+// This is the guard service. It is used to check if the user is external or not.
 @Injectable({
   providedIn: 'root'
 })
 export class UserGuard implements CanActivate {
-  constructor( //private loginService: LoginService,
+  constructor(
               private authStorageService: LocalStorageService,
               private jwtService: JWTTokenService,
               private router: Router) {
@@ -21,10 +22,10 @@ export class UserGuard implements CanActivate {
         this.jwtService.setToken(this.authStorageService.get('token'));
       }
       if (this.jwtService.getUserEmail()) {
-          if (this.jwtService.getUserType() === 1) {
+          if (this.jwtService.getUserType() === 1) { // 1 is the user type for external user.
             console.log('UserGuard: canActivate: true');
             return true;
-          } else {
+          } else { // 0 is the user type for admin.
             return false;
           }
       }
