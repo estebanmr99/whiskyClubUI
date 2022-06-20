@@ -187,7 +187,7 @@ export class InventoryComponent implements OnInit {
 
     // Fill the form with the selected row.
     this.productForm.setValue({
-      idProduct: null,
+      idProduct: eventRow.idProduct,
       inventory: null,
       currency: null,
       localPrice: null,
